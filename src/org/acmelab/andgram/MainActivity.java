@@ -49,6 +49,7 @@ public class MainActivity extends Activity
 
     EditText txtPassword = null;
     EditText txtUsername = null;
+    EditText txtCaption  = null;
     ImageView imageView = null;
     Button uploadButton = null;
 
@@ -68,6 +69,7 @@ public class MainActivity extends Activity
 
         txtPassword = (EditText)findViewById(R.id.txtPassword);
         txtUsername = (EditText)findViewById(R.id.txtUsername);
+        txtCaption  = (EditText)findViewById(R.id.txtCaption);
         imageView = (ImageView)findViewById(R.id.imageView);
         uploadButton = (Button)findViewById(R.id.btnUpload);
 
@@ -124,18 +126,21 @@ public class MainActivity extends Activity
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             Log.i(TAG, "Upload response: " + httpResponse.getStatusLine());
-            Toast.makeText(MainActivity.this, httpResponse.getStatusLine().toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, httpResponse.getStatusLine().toString(), Toast.LENGTH_LONG).show();
         } catch( Exception e ) {
             Log.e(TAG, "HttpPost error: " + e.toString());
             Toast.makeText(MainActivity.this, "Upload failed " + e.toString(), Toast.LENGTH_LONG).show();
         }
 
-        // configure
+        // configure / comment
         try {
             HttpPost httpPost = new HttpPost(CONFIGURE_URL);
+
+            String partComment = txtCaption.getText().toString();
+
             List<NameValuePair> postParams = new ArrayList<NameValuePair>();
             postParams.add(new BasicNameValuePair("device_timestamp", timeInSeconds));
-            postParams.add(new BasicNameValuePair("caption", TAG));
+            postParams.add(new BasicNameValuePair("caption", partComment));
             httpPost.setEntity(new UrlEncodedFormEntity(postParams, HTTP.UTF_8));
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
