@@ -1,13 +1,11 @@
 package org.acmelab.andgram;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.ParseException;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,10 +20,8 @@ import android.widget.Toast;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
@@ -45,14 +41,11 @@ public class MainActivity extends Activity
     private static final int CAMERA_PIC_REQUEST = 1337;
     private static final String TAG = "ANDGRAM";
     private static final String OUTPUT_DIR = "andgram";
+    private static final int ID_MAIN = 1;
 
-    private static final String LOGIN_URL = "https://instagr.am/api/v1/accounts/login/";
-    private static final String LOGOUT_URL = "http://instagr.am/api/v1/accounts/logout/";
     private static final String UPLOAD_URL = "http://instagr.am/api/v1/media/upload/";
     private static final String CONFIGURE_URL = "https://instagr.am/api/v1/media/configure/";
 
-    EditText txtPassword = null;
-    EditText txtUsername = null;
     EditText txtCaption  = null;
     ImageView imageView = null;
     Button uploadButton = null;
@@ -71,8 +64,6 @@ public class MainActivity extends Activity
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.useragent", "Instagram");
 
-        txtPassword = (EditText)findViewById(R.id.txtPassword);
-        txtUsername = (EditText)findViewById(R.id.txtUsername);
         txtCaption  = (EditText)findViewById(R.id.txtCaption);
         imageView = (ImageView)findViewById(R.id.imageView);
         uploadButton = (Button)findViewById(R.id.btnUpload);
@@ -81,6 +72,11 @@ public class MainActivity extends Activity
         // create the output dir for us
         File outputDirectory = new File(Environment.getExternalStorageDirectory(), OUTPUT_DIR);
         outputDirectory.mkdirs();
+    }
+
+    public void launchCredentials(View view) {
+        Intent credentialsIntent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivityForResult(credentialsIntent,ID_MAIN);
     }
 
     public void takePicture(View view) {
@@ -166,48 +162,6 @@ public class MainActivity extends Activity
             returnMap.put("result", "HttpPost error: " + e.toString());
             return returnMap;
         }
-    }
-
-    public CookieStore doLogin(View view) {
-        StringBuffer cookieString = null;
-        Log.i(TAG, "Login button pressed");
-        String password = txtPassword.getText().toString();
-        String username = txtUsername.getText().toString();
-        CookieStore cookieStore = null;
-
-        HttpPost httpPost = new HttpPost(LOGIN_URL);
-        List<NameValuePair> postParams = new ArrayList<NameValuePair>();
-        postParams.add(new BasicNameValuePair("username", username));
-        postParams.add(new BasicNameValuePair("password", password));
-        postParams.add(new BasicNameValuePair("device_id", "0000"));
-
-        try {
-            httpPost.setEntity(new UrlEncodedFormEntity(postParams, HTTP.UTF_8));
-
-            HttpResponse httpResponse = httpClient.execute(httpPost);
-            HttpEntity httpEntity = httpResponse.getEntity();
-            Log.i(TAG, "Login response: " + httpResponse.getStatusLine());
-
-            Log.i(TAG, "Post logon cookies:");
-            cookieStore = httpClient.getCookieStore();
-            List<Cookie> cookieList = cookieStore.getCookies();
-            cookieString = new StringBuffer();
-            if (cookieList.isEmpty()) {
-                Log.i(TAG, "None");
-            } else {
-                for (int i = 0; i < cookieList.size(); i++) {
-                    Log.i(TAG, "- " + cookieList.get(i).toString());
-                    cookieString.append(cookieList.get(i).toString() + "\n");
-                }
-                Toast.makeText(MainActivity.this, "Logged in" , Toast.LENGTH_SHORT).show();
-                if( imageReady ) uploadButton.setEnabled(true);
-            }
-        } catch( Exception e ) {
-            Log.e(TAG, "HttpPost error: " + e.toString());
-            Toast.makeText(MainActivity.this, "doLogin failed " + e.toString(), Toast.LENGTH_LONG).show();
-        }
-
-        return cookieStore;
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
