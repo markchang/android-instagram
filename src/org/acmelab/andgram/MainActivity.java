@@ -1,6 +1,7 @@
 package org.acmelab.andgram;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ParseException;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -34,7 +36,9 @@ import org.apache.http.protocol.HTTP;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends Activity
 {
@@ -99,14 +103,20 @@ public class MainActivity extends Activity
         }
     }
 
-    public void doUpload(View view) {
+    public Map<String, String> doUpload() {
         Log.i(TAG, "Upload");
         Long timeInMilliseconds = System.currentTimeMillis()/1000;
         String timeInSeconds = timeInMilliseconds.toString();
         MultipartEntity multipartEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+        Map returnMap = new HashMap<String, String>();
+
+        // check for cookies
+        if( httpClient.getCookieStore() == null ) {
+            returnMap.put("result", "Not logged in");
+            return returnMap;
+        }
 
         try {
-            // check for cookies
             // create multipart data
             File imageFile = new File(imageUri.getPath());
             FileBody partFile = new FileBody(imageFile);
@@ -115,8 +125,9 @@ public class MainActivity extends Activity
             multipartEntity.addPart("device_timestamp", partTime);
         } catch ( Exception e ) {
             Log.e(TAG,"Error creating mulitpart form: " + e.toString());
-            Toast.makeText(MainActivity.this, "Create mulitpart failed " + e.toString(), Toast.LENGTH_LONG).show();
-            return;
+            //Toast.makeText(MainActivity.this, "Create multipart failed " + e.toString(), Toast.LENGTH_LONG).show();
+            returnMap.put("result", "Error creating mulitpart form: " + e.toString());
+            return returnMap;
         }
 
         // upload
@@ -126,10 +137,11 @@ public class MainActivity extends Activity
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             Log.i(TAG, "Upload response: " + httpResponse.getStatusLine());
-            //Toast.makeText(MainActivity.this, httpResponse.getStatusLine().toString(), Toast.LENGTH_LONG).show();
         } catch( Exception e ) {
             Log.e(TAG, "HttpPost error: " + e.toString());
-            Toast.makeText(MainActivity.this, "Upload failed " + e.toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "Upload failed " + e.toString(), Toast.LENGTH_LONG).show();
+            returnMap.put("result", "Upload failed " + e.toString());
+            return returnMap;
         }
 
         // configure / comment
@@ -145,10 +157,14 @@ public class MainActivity extends Activity
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             Log.i(TAG, "Configure response: " + httpResponse.getStatusLine());
-            Toast.makeText(MainActivity.this, httpResponse.getStatusLine().toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "Upload complete", Toast.LENGTH_SHORT).show();
+            returnMap.put("result", httpResponse.getStatusLine().toString());
+            return returnMap;
         } catch( Exception e ) {
             Log.e(TAG, "HttpPost error: " + e.toString());
-            Toast.makeText(MainActivity.this, "Configure failed " + e.toString(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "Configure failed " + e.toString(), Toast.LENGTH_LONG).show();
+            returnMap.put("result", "HttpPost error: " + e.toString());
+            return returnMap;
         }
     }
 
@@ -224,6 +240,21 @@ public class MainActivity extends Activity
                 imageReady = false;
                 imageUri = null;
             }
+        }
+    }
+
+    private class UploadPhoto extends AsyncTask<Void, Void, Map<String, String>> {
+
+        protected void onPreExecute() {
+            Toast.makeText(MainActivity.this, "Upoading in the background", Toast.LENGTH_SHORT).show();
+        }
+
+        protected Map<String,String> doInBackground(Void... voids) {
+            return doUpload();
+        }
+
+        protected void onPostExecute(Map<String,String> resultMap) {
+            Toast.makeText(MainActivity.this, resultMap.get("result"), Toast.LENGTH_SHORT).show();
         }
     }
 
