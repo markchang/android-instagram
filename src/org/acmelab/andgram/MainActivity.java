@@ -3,6 +3,7 @@ package org.acmelab.andgram;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -12,6 +13,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,9 +78,37 @@ public class MainActivity extends Activity
         outputDirectory.mkdirs();
     }
 
-    public void launchCredentials(View view) {
-        Intent credentialsIntent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivityForResult(credentialsIntent,ID_MAIN);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch( item.getItemId() ) {
+            case R.id.refresh:
+                return true;
+            case R.id.preferences:
+                return true;
+            case R.id.credentials:
+                launchCredentials();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void launchCredentials() {
+        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putBoolean("loginValid", false);
+        editor.commit();
+
+        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(loginIntent);
     }
 
     public void takePicture(View view) {

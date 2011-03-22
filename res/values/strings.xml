@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Andgram</string>
+    <string name="main_menu_credentials">Credentials</string>
+    <string name="main_menu_refresh">Refresh</string>
+    <string name="main_menu_preferences">Preferences</string>
 </resources>
