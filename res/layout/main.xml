@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<RelativeLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerHorizontal="true">-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+>
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -12,12 +19,6 @@
         android:textStyle="bold"
         android:textColor="#15317E"
         />
-    <EditText
-        android:id="@+id/txtCaption"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Taken by Andgram"
-        />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -25,26 +26,53 @@
         >
         <Button
             android:id="@+id/btnPicture"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Take Picture"
             android:onClick="takePicture"
             />
         <Button
             android:id="@+id/btnUpload"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Upload"
-            android:onClick="doUpload"
+            android:onClick="startUpload"
             android:enabled="false"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/captionRow"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        >
+
+        <TextView
+            android:id="@+id/lblCaption"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Comment"
+            android:visibility="visible"
+        />
+
+        <EditText
+            android:id="@+id/txtCaption"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Taken by Andgram"
+            android:visibility="visible"
             />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside" />
 
 </LinearLayout>
-
+<!--</RelativeLayout>-->

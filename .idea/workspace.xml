@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ANDGRAM" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/menu/main_activity_menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" afterPath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/main_activity_menu.xml" afterPath="$PROJECT_DIR$/res/menu/main_activity_menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
@@ -75,19 +73,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="91" selection-start="3515" selection-end="3515" vertical-scroll-proportion="0.0">
+            <state line="131" column="52" selection-start="4646" selection-end="4646" vertical-scroll-proportion="-3.4622905">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java">
+      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="0" selection-start="5156" selection-end="5156" vertical-scroll-proportion="0.21787709">
+            <state line="46" column="35" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -96,7 +94,7 @@
       <file leaf-file-name="main_activity_menu.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/menu/main_activity_menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="45" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+            <state line="10" column="30" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -105,7 +103,7 @@
       <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="52" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+            <state line="6" column="40" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,13 +125,13 @@
       <list>
         <option value="$PROJECT_DIR$/res/layout/credentials.xml" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/CredentialsActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/login.xml" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/menu/main_activity_menu.xml" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
       </list>
     </option>
   </component>
@@ -317,7 +315,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="AndroidTargetDevices" value="emulator-5554" />
+    <property name="AndroidTargetDevices" value="HT05NHL02678" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -512,7 +510,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39970392" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2531458" sideWeight="0.60026383" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2531458" sideWeight="0.6701847" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -572,13 +570,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="824" selection-end="824" vertical-scroll-proportion="0.41152263">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="65" selection-start="429" selection-end="429" vertical-scroll-proportion="0.20041753">
@@ -607,30 +598,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/main_activity_menu.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="45" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+        <state line="142" column="43" selection-start="5267" selection-end="5267" vertical-scroll-proportion="0.26256984">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="52" selection-start="264" selection-end="264" vertical-scroll-proportion="0.0">
+        <state line="6" column="40" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/main_activity_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="30" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="35" selection-start="1539" selection-end="1539" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../android-sdk/platforms/android-2.1/android.jar!/android/widget/LinearLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="191" selection-end="191" vertical-scroll-proportion="0.10419682">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="91" selection-start="3515" selection-end="3515" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="0" selection-start="5156" selection-end="5156" vertical-scroll-proportion="0.21787709">
+        <state line="131" column="52" selection-start="4646" selection-end="4646" vertical-scroll-proportion="-3.4622905">
           <folding />
         </state>
       </provider>

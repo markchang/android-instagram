@@ -33,8 +33,8 @@ import java.util.List;
 
 public class LoginActivity extends Activity {
     private static final String TAG = "ANDGRAM";
-    private static final String LOGIN_URL = "https://instagr.am/api/v1/accounts/login/";
-    private static final String LOGOUT_URL = "http://instagr.am/api/v1/accounts/logout/";
+    public static final String LOGIN_URL = "https://instagr.am/api/v1/accounts/login/";
+    public static final String LOGOUT_URL = "http://instagr.am/api/v1/accounts/logout/";
     public static final String PREFS_NAME = "andgram_prefs";
 
     EditText txtPassword = null;
@@ -140,7 +140,7 @@ public class LoginActivity extends Activity {
 
                 String loginStatus = jsonObject.getString("status");
 
-                if( loginStatus.equals("\"ok\"") ) {
+                if( !loginStatus.equals("ok") ) {
                     Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                     Log.e(TAG, "JSON status not ok: " + jsonObject.getString("status"));
                     return;

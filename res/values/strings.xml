@@ -4,4 +4,5 @@
     <string name="main_menu_credentials">Credentials</string>
     <string name="main_menu_refresh">Refresh</string>
     <string name="main_menu_preferences">Preferences</string>
+    <string name="main_menu_clear">Clear</string>
 </resources>

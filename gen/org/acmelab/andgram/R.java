@@ -12,20 +12,23 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_menu_compose=0x7f020000;
-        public static final int ic_menu_login=0x7f020001;
-        public static final int ic_menu_preferences=0x7f020002;
-        public static final int ic_menu_refresh=0x7f020003;
-        public static final int icon=0x7f020004;
+        public static final int ic_menu_delete=0x7f020001;
+        public static final int ic_menu_login=0x7f020002;
+        public static final int ic_menu_preferences=0x7f020003;
+        public static final int ic_menu_refresh=0x7f020004;
+        public static final int icon=0x7f020005;
     }
     public static final class id {
         public static final int btnLogin=0x7f060002;
-        public static final int btnPicture=0x7f060004;
-        public static final int btnUpload=0x7f060005;
-        public static final int credentials=0x7f060007;
-        public static final int imageView=0x7f060006;
-        public static final int preferences=0x7f060009;
-        public static final int refresh=0x7f060008;
-        public static final int txtCaption=0x7f060003;
+        public static final int btnPicture=0x7f060003;
+        public static final int btnUpload=0x7f060004;
+        public static final int captionRow=0x7f060005;
+        public static final int clear=0x7f06000a;
+        public static final int credentials=0x7f060009;
+        public static final int imageView=0x7f060008;
+        public static final int lblCaption=0x7f060006;
+        public static final int preferences=0x7f06000b;
+        public static final int txtCaption=0x7f060007;
         public static final int txtPassword=0x7f060001;
         public static final int txtUsername=0x7f060000;
     }
@@ -38,6 +41,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int main_menu_clear=0x7f040004;
         public static final int main_menu_credentials=0x7f040001;
         public static final int main_menu_preferences=0x7f040003;
         public static final int main_menu_refresh=0x7f040002;
