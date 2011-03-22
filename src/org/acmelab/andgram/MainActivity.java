@@ -5,6 +5,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -36,10 +38,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +51,7 @@ public class MainActivity extends Activity
     private static final String TAG = "ANDGRAM";
     private static final String OUTPUT_DIR = "andgram";
     private static final String OUTPUT_FILE = "andgram.jpg";
+    private static final String OUTPUT_FILE_CROPPED = "andgram_cropped.jpg";
     private static final int ID_MAIN = 1;
 
     private static final String UPLOAD_URL = "http://instagr.am/api/v1/media/upload/";
@@ -63,6 +63,7 @@ public class MainActivity extends Activity
 
     private DefaultHttpClient httpClient = null;
     private Uri imageUri = null;
+    private Uri croppedImageUri = null;
     private boolean imageReady = false;
 
     /** Called when the activity is first created. */
@@ -132,7 +133,11 @@ public class MainActivity extends Activity
         Log.i(TAG, "Clear image");
         if( imageReady ) {
             imageReady = false;
+            imageUri = null;
+            croppedImageUri = null;
+
             findViewById(R.id.captionRow).setVisibility(View.INVISIBLE);
+            findViewById(R.id.btnUpload).setEnabled(false);
             ((BitmapDrawable)imageView.getDrawable()).getBitmap().recycle();
             imageView.setImageBitmap(null);
         }
@@ -143,7 +148,6 @@ public class MainActivity extends Activity
         if( !doLogin() ) {
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(MainActivity.this, "Starting upload", Toast.LENGTH_SHORT).show();
             new UploadPhotoTask().execute();
         }
     }
@@ -223,14 +227,13 @@ public class MainActivity extends Activity
 
         try {
             // create multipart data
-            File imageFile = new File(imageUri.getPath());
+            File imageFile = new File(croppedImageUri.getPath());
             FileBody partFile = new FileBody(imageFile);
             StringBody partTime = new StringBody(timeInSeconds);
             multipartEntity.addPart("photo", partFile );
             multipartEntity.addPart("device_timestamp", partTime);
         } catch ( Exception e ) {
             Log.e(TAG,"Error creating mulitpart form: " + e.toString());
-            //Toast.makeText(MainActivity.this, "Create multipart failed " + e.toString(), Toast.LENGTH_LONG).show();
             returnMap.put("result", "Error creating mulitpart form: " + e.toString());
             return returnMap;
         }
@@ -272,7 +275,6 @@ public class MainActivity extends Activity
             }
         } catch( Exception e ) {
             Log.e(TAG, "HttpPost exception: " + e.toString());
-            //Toast.makeText(MainActivity.this, "Upload failed " + e.toString(), Toast.LENGTH_LONG).show();
             returnMap.put("result", "HttpPost exception: " + e.toString());
             return returnMap;
         }
@@ -304,6 +306,67 @@ public class MainActivity extends Activity
         }
     }
 
+    private void doCrop() {
+        StringBuilder imageFileName = new StringBuilder();
+        StringBuilder croppedImageFileName = new StringBuilder();
+        imageFileName.append(Environment.getExternalStorageDirectory() + "/" + OUTPUT_DIR + "/" + OUTPUT_FILE);
+        croppedImageFileName.append(Environment.getExternalStorageDirectory() + "/" + OUTPUT_DIR + "/" + OUTPUT_FILE_CROPPED);
+
+        // Get the source image's dimensions
+        Bitmap srcBitmap = BitmapFactory.decodeFile(imageFileName.toString());
+
+        int srcWidth = srcBitmap.getWidth();
+        int srcHeight = srcBitmap.getHeight();
+        int desiredWidth = 612;
+        int startX = srcWidth/2 - desiredWidth/2;
+        int startY = srcHeight/2 - desiredWidth/2;
+
+        Bitmap croppedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
+
+        // Save
+        try {
+            File outputFile = new File(Environment.getExternalStorageDirectory(), OUTPUT_DIR + "/" + OUTPUT_FILE_CROPPED);
+            croppedImageUri = Uri.fromFile(outputFile);
+
+            FileOutputStream out = new FileOutputStream(croppedImageFileName.toString());
+            croppedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            croppedBitmap.recycle();
+            srcBitmap.recycle();
+            Log.i(TAG,"Cropped image, now returning");
+        } catch( Exception e ) {
+
+        }
+    }
+
+    private void showCroppedImage() {
+        getContentResolver().notifyChange(croppedImageUri, null);
+        ContentResolver contentResolver = getContentResolver();
+        Bitmap imageBitmap;
+        LinearLayout captionRow = (LinearLayout)findViewById(R.id.captionRow);
+        try {
+            captionRow.setVisibility(View.VISIBLE);
+
+            Drawable toRecycle =  imageView.getDrawable();
+            if( toRecycle != null ) {
+                Bitmap bitmapToRecycle = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                if( bitmapToRecycle != null ) {
+                    ((BitmapDrawable)imageView.getDrawable()).getBitmap().recycle();
+                }
+            }
+            imageBitmap = android.provider.MediaStore.Images.Media.getBitmap(contentResolver, croppedImageUri);
+            imageView.setImageBitmap(imageBitmap);
+            Log.i(TAG, "Image: " + croppedImageUri.toString());
+            imageReady = true;
+
+            // turn on upload button
+            uploadButton.setEnabled(true);
+        } catch ( Exception e ) {
+            Toast.makeText(MainActivity.this, "Camera error", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Camera error: " + e.toString() );
+            doClear();
+        }
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -312,35 +375,8 @@ public class MainActivity extends Activity
                 case CAMERA_PIC_REQUEST:
                     Log.i(TAG, "Camera returned");
                     getContentResolver().notifyChange(imageUri, null);
-                    ContentResolver contentResolver = getContentResolver();
-                    Bitmap imageBitmap;
-                    LinearLayout captionRow = (LinearLayout)findViewById(R.id.captionRow);
-                    try {
-                        captionRow.setVisibility(View.VISIBLE);
-
-                        Drawable toRecycle =  imageView.getDrawable();
-                        if( toRecycle != null ) {
-                            Bitmap bitmapToRecycle = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                            if( bitmapToRecycle != null ) {
-                                ((BitmapDrawable)imageView.getDrawable()).getBitmap().recycle();
-                            }
-                        }
-                        imageBitmap = android.provider.MediaStore.Images.Media.getBitmap(contentResolver, imageUri);
-                        imageView.setImageBitmap(imageBitmap);
-                        Log.i(TAG, "Image: " + imageUri.toString());
-                        imageReady = true;
-
-                        // turn on upload button
-                        uploadButton.setEnabled(true);
-                    } catch ( Exception e ) {
-                        Toast.makeText(MainActivity.this, "Camera error", Toast.LENGTH_LONG).show();
-                        Log.e(TAG, "Camera error: " + e.toString() );
-                        captionRow.setVisibility(View.INVISIBLE);
-                        imageReady = false;
-                        imageUri = null;
-                    }
-                    break;
-                case CROP_REQUEST:
+                    doCrop();
+                    showCroppedImage();
                     break;
                 default:
 
