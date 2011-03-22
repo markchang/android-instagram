@@ -318,6 +318,7 @@ public class MainActivity extends Activity
         int srcWidth = srcBitmap.getWidth();
         int srcHeight = srcBitmap.getHeight();
         int desiredWidth = 612;
+
         int startX = srcWidth/2 - desiredWidth/2;
         int startY = srcHeight/2 - desiredWidth/2;
 
