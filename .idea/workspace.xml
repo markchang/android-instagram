@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ANDGRAM" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/image_list.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/image_list_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" afterPath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/main_activity_menu.xml" afterPath="$PROJECT_DIR$/res/menu/main_activity_menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
+    <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="requeueing garbage-collected">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,19 +79,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageLoader.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ImageLoader.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="209" column="8" selection-start="7056" selection-end="7056" vertical-scroll-proportion="0.0">
+            <state line="58" column="64" selection-start="2198" selection-end="2198" vertical-scroll-proportion="0.6807388">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LazyAdapter.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LazyAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="61" selection-start="1381" selection-end="1381" vertical-scroll-proportion="0.9407266">
+            <state line="39" column="38" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -144,8 +134,8 @@
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
       </list>
     </option>
   </component>
@@ -239,7 +229,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="AndroidTargetDevices" value="HT05NHL02678" />
+    <property name="AndroidTargetDevices" value="emulator-5554" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -444,7 +434,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="52" y="57" width="1156" height="920" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -458,7 +448,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31949458" sideWeight="0.69" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -581,11 +571,6 @@
         <state line="119" column="21" selection-start="4354" selection-end="4354" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="209" column="8" selection-start="7056" selection-end="7056" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="120" column="0" selection-start="3558" selection-end="4699" vertical-scroll-proportion="0.0" />
@@ -593,7 +578,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="61" selection-start="1381" selection-end="1381" vertical-scroll-proportion="0.9407266">
+        <state line="39" column="38" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="64" selection-start="2198" selection-end="2198" vertical-scroll-proportion="0.6807388">
           <folding />
         </state>
       </provider>

@@ -45,7 +45,18 @@ public class ImageLoader {
         Log.i(Utils.TAG, "Display: " + url);
         if(cache.containsKey(url)) {
             SoftReference<Bitmap> softRef = cache.get(url);
-            imageView.setImageBitmap(softRef.get());
+            Bitmap bitmap = softRef.get();
+            if( bitmap == null ) {
+                Log.i(Utils.TAG, "Re-queuing GC'ed image: " + url);
+                // maybe? : cache.remove(softRef);
+                queuePhoto(url, activity, imageView);
+                imageView.setImageResource(stub_id);
+            } else {
+                imageView.setImageBitmap(softRef.get());
+                if( softRef.get() == null ) {
+                    Log.e(Utils.TAG, "Null bitmap: " + url);
+                }
+            }
         }
         else
         {
