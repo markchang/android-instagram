@@ -39,6 +39,7 @@ public class ImageListActivity extends Activity {
     ListView list;
     LazyAdapter adapter;
     ArrayList<String> imageList;
+    ArrayList<String> imageInfoList;
     DefaultHttpClient httpClient = null;
 
     @Override
@@ -57,6 +58,8 @@ public class ImageListActivity extends Activity {
     public boolean fetchActivity() {
         Log.i(Utils.TAG, "Image fetch");
         imageList = new ArrayList<String>();
+        imageInfoList = new ArrayList<String>();
+
         if( !Utils.doLogin(getApplicationContext(), httpClient) ) {
             Toast.makeText(ImageListActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
         } else {
@@ -89,12 +92,24 @@ public class ImageListActivity extends Activity {
                         Log.i(Utils.TAG, "Getting images from activity feed");
                         JSONArray items = jsonObject.getJSONArray("items");
 
+                        // get image URLs and commentary
+                        JSONObject entry;
+                        JSONArray imageVersions;
+                        JSONObject bigImage;
+                        JSONObject user;
+
                         for( int i=0; i< items.length(); i++ ) {
-                            JSONObject entry = (JSONObject)items.get(i);
-                            JSONArray imageVersions = entry.getJSONArray("image_versions");
-                            JSONObject bigImage = (JSONObject)imageVersions.get(0);
+                            // image
+                            entry = (JSONObject)items.get(i);
+                            imageVersions = entry.getJSONArray("image_versions");
+                            bigImage = (JSONObject)imageVersions.get(0);
                             imageList.add(bigImage.getString("url"));
-                            Log.i(Utils.TAG, imageList.get(i));
+
+                            // user
+                            user = entry.getJSONObject("user");
+                            imageInfoList.add(user.getString("full_name"));
+                            Log.i(Utils.TAG, "User " + imageInfoList.get(i) + " -> " +
+                                    imageList.get(i));
                         }
 
                         return true;
@@ -109,7 +124,10 @@ public class ImageListActivity extends Activity {
     }
 
     public void displayActivity() {
-        adapter=new LazyAdapter(this, imageList.toArray(new String[imageList.size()]));
+        adapter=new LazyAdapter(this,
+                imageList.toArray(new String[imageList.size()]),
+                imageInfoList.toArray(new String[imageInfoList.size()])
+        );
         list.setAdapter(adapter);
     }
 
