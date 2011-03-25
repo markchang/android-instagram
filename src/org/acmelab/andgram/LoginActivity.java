@@ -32,11 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends Activity {
-    private static final String TAG = "ANDGRAM";
-    public static final String LOGIN_URL = "https://instagr.am/api/v1/accounts/login/";
-    public static final String LOGOUT_URL = "http://instagr.am/api/v1/accounts/logout/";
-    public static final String PREFS_NAME = "andgram_prefs";
 
+    private static final String TAG = Utils.TAG;
     EditText txtPassword = null;
     EditText txtUsername = null;
     DefaultHttpClient httpClient = null;
@@ -49,16 +46,19 @@ public class LoginActivity extends Activity {
         txtUsername = (EditText)findViewById(R.id.txtUsername);
         httpClient = new DefaultHttpClient();
 
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Utils.PREFS_NAME, MODE_PRIVATE);
         Boolean loginValid = sharedPreferences.getBoolean("loginValid",false);
 
         if( loginValid ) {
+            finish();
             openMainActivity();
         }
     }
 
     public void openMainActivity() {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(mainIntent);
     }
 
 
@@ -72,7 +72,7 @@ public class LoginActivity extends Activity {
         }
         else {
             // save username/password in shared preferences
-            SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getSharedPreferences(Utils.PREFS_NAME, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("loginValid", true);
             editor.putString("username", username);
@@ -85,7 +85,7 @@ public class LoginActivity extends Activity {
 
     public void clearCookies() {
         // clear username/password in shared preferences
-        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Utils.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.putBoolean("loginValid", false);
@@ -103,7 +103,7 @@ public class LoginActivity extends Activity {
         String username = txtUsername.getText().toString();
 
         // create POST
-        HttpPost httpPost = new HttpPost(LOGIN_URL);
+        HttpPost httpPost = new HttpPost(Utils.LOGIN_URL);
         List<NameValuePair> postParams = new ArrayList<NameValuePair>();
         postParams.add(new BasicNameValuePair("username", username));
         postParams.add(new BasicNameValuePair("password", password));

@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Andgram"
+        android:text="@string/app_header"
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="#15317E"
@@ -29,7 +29,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Take Picture"
+            android:text="@string/take_picture"
             android:onClick="takePicture"
             />
         <Button
@@ -37,7 +37,7 @@
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Upload"
+            android:text="@string/upload"
             android:onClick="startUpload"
             android:enabled="false"
             />
@@ -55,7 +55,7 @@
             android:id="@+id/lblCaption"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Comment"
+            android:text="@string/comment"
             android:visibility="visible"
         />
 
@@ -63,7 +63,7 @@
             android:id="@+id/txtCaption"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Taken by Andgram"
+            android:text="@string/default_comment"
             android:visibility="visible"
             />
     </LinearLayout>

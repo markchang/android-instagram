@@ -46,16 +46,7 @@ import java.util.Map;
 
 public class MainActivity extends Activity
 {
-    private static final int CAMERA_PIC_REQUEST = 1;
-    private static final int CROP_REQUEST = 2;
-    private static final String TAG = "ANDGRAM";
-    private static final String OUTPUT_DIR = "andgram";
-    private static final String OUTPUT_FILE = "andgram.jpg";
-    private static final String OUTPUT_FILE_CROPPED = "andgram_cropped.jpg";
-    private static final int ID_MAIN = 1;
-
-    private static final String UPLOAD_URL = "http://instagr.am/api/v1/media/upload/";
-    private static final String CONFIGURE_URL = "https://instagr.am/api/v1/media/configure/";
+    private static final String TAG = Utils.TAG;
 
     EditText txtCaption  = null;
     ImageView imageView = null;
@@ -82,7 +73,7 @@ public class MainActivity extends Activity
 
 
         // create the output dir for us
-        File outputDirectory = new File(Environment.getExternalStorageDirectory(), OUTPUT_DIR);
+        File outputDirectory = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR);
         outputDirectory.mkdirs();
     }
 
@@ -96,37 +87,29 @@ public class MainActivity extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch( item.getItemId() ) {
+            case R.id.show_activity:
+                startActivity(new Intent(getApplicationContext(), ImageListActivity.class));
+                return true;
             case R.id.clear:
                 doClear();
                 return true;
             case R.id.preferences:
                 return true;
             case R.id.credentials:
-                launchCredentials();
+                Utils.launchCredentials(getApplicationContext());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void launchCredentials() {
-        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.putBoolean("loginValid", false);
-        editor.commit();
-
-        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(loginIntent);
-    }
-
     public void takePicture(View view) {
         Log.i(TAG, "Taking picture");
-        File outputFile = new File(Environment.getExternalStorageDirectory(), OUTPUT_DIR + "/" + OUTPUT_FILE);
+        File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
         imageUri = Uri.fromFile(outputFile);
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+        startActivityForResult(cameraIntent, Utils.CAMERA_PIC_REQUEST);
     }
 
     public void doClear() {
@@ -145,71 +128,11 @@ public class MainActivity extends Activity
 
     public void startUpload(View view) {
         Log.i(TAG, "Starting async upload");
-        if( !doLogin() ) {
+        if( !Utils.doLogin(getApplicationContext(), httpClient) ) {
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
         } else {
             new UploadPhotoTask().execute();
         }
-    }
-
-    public boolean doLogin() {
-        Log.i(TAG, "Doing login");
-
-        // gather login info
-        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, MODE_PRIVATE);
-        Boolean loginValid = sharedPreferences.getBoolean("loginValid",false);
-
-        if( !loginValid ) {
-            launchCredentials();
-            return false;
-        }
-
-        String username = sharedPreferences.getString("username","");
-        String password = sharedPreferences.getString("password","");
-
-        // create POST
-        HttpPost httpPost = new HttpPost(LoginActivity.LOGIN_URL);
-        List<NameValuePair> postParams = new ArrayList<NameValuePair>();
-        postParams.add(new BasicNameValuePair("username", username));
-        postParams.add(new BasicNameValuePair("password", password));
-        postParams.add(new BasicNameValuePair("device_id", "0000"));
-
-        try {
-            httpPost.setEntity(new UrlEncodedFormEntity(postParams, HTTP.UTF_8));
-            HttpResponse httpResponse = httpClient.execute(httpPost);
-
-            // test result code
-            if( httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK ) {
-                Log.i(TAG, "Login HTTP status fail");
-                return false;
-            }
-
-            // test json response
-            HttpEntity httpEntity = httpResponse.getEntity();
-            if( httpEntity != null ) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent(), "UTF-8"));
-                String json = reader.readLine();
-                JSONTokener jsonTokener = new JSONTokener(json);
-                JSONObject jsonObject = new JSONObject(jsonTokener);
-                Log.i(TAG,"JSON: " + jsonObject.toString());
-
-                String loginStatus = jsonObject.getString("status");
-
-                if( !loginStatus.equals("ok") ) {
-                    Log.e(TAG, "JSON status not ok: " + jsonObject.getString("status"));
-                    return false;
-                }
-            }
-
-        } catch( IOException e ) {
-            Log.e(TAG, "HttpPost error: " + e.toString());
-            return false;
-        } catch( JSONException e ) {
-            Log.e(TAG, "JSON parse error: " + e.toString());
-            return false;
-        }
-
-        return true;
     }
 
     public Map<String, String> doUpload() {
@@ -240,7 +163,7 @@ public class MainActivity extends Activity
 
         // upload
         try {
-            HttpPost httpPost = new HttpPost(UPLOAD_URL);
+            HttpPost httpPost = new HttpPost(Utils.UPLOAD_URL);
             httpPost.setEntity(multipartEntity);
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
@@ -281,7 +204,7 @@ public class MainActivity extends Activity
 
         // configure / comment
         try {
-            HttpPost httpPost = new HttpPost(CONFIGURE_URL);
+            HttpPost httpPost = new HttpPost(Utils.CONFIGURE_URL);
             String partComment = txtCaption.getText().toString();
             List<NameValuePair> postParams = new ArrayList<NameValuePair>();
             postParams.add(new BasicNameValuePair("device_timestamp", timeInSeconds));
@@ -309,8 +232,8 @@ public class MainActivity extends Activity
     private void doCrop() {
         StringBuilder imageFileName = new StringBuilder();
         StringBuilder croppedImageFileName = new StringBuilder();
-        imageFileName.append(Environment.getExternalStorageDirectory() + "/" + OUTPUT_DIR + "/" + OUTPUT_FILE);
-        croppedImageFileName.append(Environment.getExternalStorageDirectory() + "/" + OUTPUT_DIR + "/" + OUTPUT_FILE_CROPPED);
+        imageFileName.append(Environment.getExternalStorageDirectory() + "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
+        croppedImageFileName.append(Environment.getExternalStorageDirectory() + "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_CROPPED);
 
         // Get the source image's dimensions
         Bitmap srcBitmap = BitmapFactory.decodeFile(imageFileName.toString());
@@ -326,7 +249,7 @@ public class MainActivity extends Activity
 
         // Save
         try {
-            File outputFile = new File(Environment.getExternalStorageDirectory(), OUTPUT_DIR + "/" + OUTPUT_FILE_CROPPED);
+            File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_CROPPED);
             croppedImageUri = Uri.fromFile(outputFile);
 
             FileOutputStream out = new FileOutputStream(croppedImageFileName.toString());
@@ -373,7 +296,7 @@ public class MainActivity extends Activity
 
         if( resultCode == Activity.RESULT_OK ) {
             switch( requestCode ) {
-                case CAMERA_PIC_REQUEST:
+                case Utils.CAMERA_PIC_REQUEST:
                     Log.i(TAG, "Camera returned");
                     getContentResolver().notifyChange(imageUri, null);
                     doCrop();

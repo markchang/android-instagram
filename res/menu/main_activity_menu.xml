@@ -2,15 +2,19 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/credentials"
-        android:title="@string/main_menu_credentials"
-        android:icon="@drawable/ic_menu_login"
+        android:id="@+id/show_activity"
+        android:title="@string/activity"
+        android:icon="@drawable/ic_menu_slideshow"
         />
-
     <item
         android:id="@+id/clear"
         android:title="@string/main_menu_clear"
         android:icon="@drawable/ic_menu_delete"
+        />
+    <item
+        android:id="@+id/credentials"
+        android:title="@string/main_menu_credentials"
+        android:icon="@drawable/ic_menu_login"
         />
     <item
         android:id="@+id/preferences"

@@ -5,4 +5,11 @@
     <string name="main_menu_refresh">Refresh</string>
     <string name="main_menu_preferences">Preferences</string>
     <string name="main_menu_clear">Clear</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="app_header">Andgram</string>
+    <string name="upload">Upload</string>
+    <string name="comment">Comment</string>
+    <string name="default_comment">Taken by Andgram</string>
+    <string name="activity">Activity</string>
+    <string name="empty">empty</string>
 </resources>
