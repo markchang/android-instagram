@@ -3,10 +3,7 @@ package org.acmelab.andgram;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -24,7 +21,6 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.CookieStore;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.HttpMultipartMode;
@@ -34,7 +30,6 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -88,7 +83,14 @@ public class MainActivity extends Activity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch( item.getItemId() ) {
             case R.id.show_activity:
-                startActivity(new Intent(getApplicationContext(), ImageListActivity.class));
+                if( Utils.isOnline(getApplicationContext()) == false ) {
+                    Toast.makeText(MainActivity.this,
+                        "No connection to Internet.\nTry again later.",
+                        Toast.LENGTH_SHORT).show();
+                    Log.i(Utils.TAG, "No internet, didn't start ActivityView");
+                    return false;
+                } else
+                    startActivity(new Intent(getApplicationContext(), ImageListActivity.class));
                 return true;
             case R.id.clear:
                 doClear();
@@ -127,6 +129,14 @@ public class MainActivity extends Activity
     }
 
     public void startUpload(View view) {
+        if( Utils.isOnline(getApplicationContext()) == false ) {
+            Toast.makeText(MainActivity.this,
+                "No connection to Internet.\nTry again later.",
+                Toast.LENGTH_SHORT);
+            Log.i(Utils.TAG, "No internet, didn't start upload.");
+            return;
+        }
+
         Log.i(TAG, "Starting async upload");
         if( !Utils.doLogin(getApplicationContext(), httpClient) ) {
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
@@ -229,7 +239,7 @@ public class MainActivity extends Activity
         }
     }
 
-    private void doCrop() {
+    private void doImageResizeAndRound() {
         StringBuilder imageFileName = new StringBuilder();
         StringBuilder croppedImageFileName = new StringBuilder();
         imageFileName.append(Environment.getExternalStorageDirectory() + "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
@@ -240,12 +250,13 @@ public class MainActivity extends Activity
 
         int srcWidth = srcBitmap.getWidth();
         int srcHeight = srcBitmap.getHeight();
-        int desiredWidth = 612;
+        int desiredWidth = Utils.IMAGE_WIDTH;
 
         int startX = srcWidth/2 - desiredWidth/2;
         int startY = srcHeight/2 - desiredWidth/2;
 
         Bitmap croppedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
+        Bitmap roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
 
         // Save
         try {
@@ -253,13 +264,38 @@ public class MainActivity extends Activity
             croppedImageUri = Uri.fromFile(outputFile);
 
             FileOutputStream out = new FileOutputStream(croppedImageFileName.toString());
-            croppedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-            croppedBitmap.recycle();
+            roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
+                    Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
+            roundedBitmap.recycle();
             srcBitmap.recycle();
-            Log.i(TAG,"Cropped image, now returning");
+            Log.i(TAG,"Processed image, now returning");
         } catch( Exception e ) {
 
         }
+    }
+
+    private Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+            bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(Utils.IMAGE_BORDER, Utils.IMAGE_BORDER, Utils.IMAGE_WIDTH-Utils.IMAGE_BORDER,
+                Utils.IMAGE_HEIGHT-Utils.IMAGE_BORDER);
+        final RectF rectF = new RectF(rect);
+        final float roundPx = Utils.IMAGE_CORNER_RADIUS;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
+
     }
 
     private void showCroppedImage() {
@@ -299,7 +335,7 @@ public class MainActivity extends Activity
                 case Utils.CAMERA_PIC_REQUEST:
                     Log.i(TAG, "Camera returned");
                     getContentResolver().notifyChange(imageUri, null);
-                    doCrop();
+                    doImageResizeAndRound();
                     showCroppedImage();
                     break;
                 default:
@@ -311,7 +347,7 @@ public class MainActivity extends Activity
     private class UploadPhotoTask extends AsyncTask<Void, Void, Map<String, String>> {
 
         protected void onPreExecute() {
-            Toast.makeText(MainActivity.this, "Uploading in the background", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Uploading", Toast.LENGTH_SHORT).show();
         }
 
         protected Map<String,String> doInBackground(Void... voids) {

@@ -21,23 +21,25 @@ public final class R {
         public static final int stub=0x7f020007;
     }
     public static final class id {
-        public static final int btnLogin=0x7f060006;
-        public static final int btnPicture=0x7f060007;
-        public static final int btnUpload=0x7f060008;
+        public static final int btnLogin=0x7f060008;
+        public static final int btnPicture=0x7f060009;
+        public static final int btnUpload=0x7f06000a;
         public static final int button1=0x7f060001;
-        public static final int captionRow=0x7f060009;
-        public static final int clear=0x7f06000e;
-        public static final int credentials=0x7f06000f;
+        public static final int caption=0x7f060003;
+        public static final int captionRow=0x7f06000b;
+        public static final int clear=0x7f060010;
+        public static final int comments=0x7f060005;
+        public static final int credentials=0x7f060011;
         public static final int image=0x7f060002;
-        public static final int imageView=0x7f06000c;
-        public static final int lblCaption=0x7f06000a;
+        public static final int imageView=0x7f06000e;
+        public static final int lblCaption=0x7f06000c;
         public static final int list=0x7f060000;
-        public static final int preferences=0x7f060010;
-        public static final int show_activity=0x7f06000d;
-        public static final int text=0x7f060003;
-        public static final int txtCaption=0x7f06000b;
-        public static final int txtPassword=0x7f060005;
-        public static final int txtUsername=0x7f060004;
+        public static final int preferences=0x7f060012;
+        public static final int show_activity=0x7f06000f;
+        public static final int txtCaption=0x7f06000d;
+        public static final int txtPassword=0x7f060007;
+        public static final int txtUsername=0x7f060006;
+        public static final int username=0x7f060004;
     }
     public static final class layout {
         public static final int image_list=0x7f030000;

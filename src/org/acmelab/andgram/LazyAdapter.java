@@ -9,24 +9,24 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class LazyAdapter extends BaseAdapter {
 
     private Activity activity;
-    private String[] imageUrlArray;
-    private String[] imageTextArray;
+    private ArrayList<InstagramImage> instagramImageArrayList;
     private static LayoutInflater inflater=null;
     public ImageLoader imageLoader;
 
-    public LazyAdapter(Activity a, String[] d, String[] di) {
+    public LazyAdapter(Activity a, ArrayList<InstagramImage> i) {
         activity = a;
-        imageUrlArray = d;
-        imageTextArray = di;
+        instagramImageArrayList = i;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        imageLoader=new ImageLoader(activity.getApplicationContext());
+        imageLoader = new ImageLoader(activity.getApplicationContext());
     }
 
     public int getCount() {
-        return imageUrlArray.length;
+        return instagramImageArrayList.size();
     }
 
     public Object getItem(int position) {
@@ -38,7 +38,9 @@ public class LazyAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder{
-        public TextView text;
+        public TextView username;
+        public TextView comments;
+        public TextView caption;
         public ImageView image;
     }
 
@@ -47,17 +49,23 @@ public class LazyAdapter extends BaseAdapter {
         ViewHolder holder;
         if(convertView==null){
             vi = inflater.inflate(R.layout.image_list_item, null);
-            holder=new ViewHolder();
-            holder.text=(TextView)vi.findViewById(R.id.text);
-            holder.image=(ImageView)vi.findViewById(R.id.image);
+            holder = new ViewHolder();
+            holder.image = (ImageView)vi.findViewById(R.id.image);
+            holder.username = (TextView)vi.findViewById(R.id.username);
+            holder.comments = (TextView)vi.findViewById(R.id.comments);
+            holder.caption = (TextView)vi.findViewById(R.id.caption);
             vi.setTag(holder);
         }
         else
             holder=(ViewHolder)vi.getTag();
 
-        holder.text.setText(imageTextArray[position]);
-        holder.image.setTag(imageUrlArray[position]);
-        imageLoader.DisplayImage(imageUrlArray[position], activity, holder.image);
+        holder.image.setTag(instagramImageArrayList.get(position).getUrl());
+        holder.username.setText(instagramImageArrayList.get(position).getUsername());
+        holder.caption.setText(instagramImageArrayList.get(position).getCaption());
+        holder.comments.setText(instagramImageArrayList.get(position).getComments());
+
+        imageLoader.DisplayImage(instagramImageArrayList.get(position).getUrl(), activity, holder.image);
+
         return vi;
     }
 }

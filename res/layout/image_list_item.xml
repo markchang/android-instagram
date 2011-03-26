@@ -14,11 +14,25 @@
         android:adjustViewBounds="true"
         />
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/caption"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_vertical"
-        android:textSize="20dip"
+        android:textSize="12dip"
+        android:layout_marginLeft="10dip"/>
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:textSize="12dip"
+        android:layout_marginLeft="10dip"/>
+    <TextView
+        android:id="@+id/comments"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_vertical"
+        android:textSize="12dip"
         android:layout_marginLeft="10dip"/>
 </LinearLayout>
 

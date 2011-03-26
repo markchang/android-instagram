@@ -102,6 +102,14 @@ public class LoginActivity extends Activity {
         String password = txtPassword.getText().toString();
         String username = txtUsername.getText().toString();
 
+        if( Utils.isOnline(getApplicationContext()) == false ) {
+            Toast.makeText(LoginActivity.this,
+                    "No connection to Internet.\nTry again later.",
+                    Toast.LENGTH_SHORT).show();
+            Log.i(Utils.TAG, "No internet, failed Login");
+            return;
+        }
+
         // create POST
         HttpPost httpPost = new HttpPost(Utils.LOGIN_URL);
         List<NameValuePair> postParams = new ArrayList<NameValuePair>();

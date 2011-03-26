@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.util.Log;
+import android.widget.Toast;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -26,11 +28,15 @@ public class Utils {
     public static final String TAG = "ANDGRAM";
     public static final String PREFS_NAME = "andgram_prefs";
     public static final int CAMERA_PIC_REQUEST = 1;
-    public static final int CROP_REQUEST = 2;
     public static final String OUTPUT_DIR = "andgram";
     public static final String OUTPUT_FILE = "andgram.jpg";
     public static final String OUTPUT_FILE_CROPPED = "andgram_cropped.jpg";
     public static final int ID_MAIN = 1;
+    public static final int IMAGE_WIDTH = 612;
+    public static final int IMAGE_HEIGHT = 612;
+    public static final int IMAGE_BORDER = 24;
+    public static final int IMAGE_CORNER_RADIUS = 35;
+    public static final int IMAGE_JPEG_COMPRESSION_QUALITY = 75;
 
     public static final String LOGIN_URL = "https://instagr.am/api/v1/accounts/login/";
     public static final String LOGOUT_URL = "http://instagr.am/api/v1/accounts/logout/";
@@ -38,6 +44,12 @@ public class Utils {
     public static final String CONFIGURE_URL = "https://instagr.am/api/v1/media/configure/";
     public static final String TIMELINE_URL = "http://instagr.am/api/v1/feed/timeline/";
 
+
+    public static boolean isOnline(Context ctx) {
+        ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if( cm.getActiveNetworkInfo() == null ) return false;
+        return cm.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
 
     public static void CopyStream(InputStream is, OutputStream os)
     {
