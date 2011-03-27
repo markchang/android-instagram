@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DependencyValidationManager">
+    <scope name="android-instagram" pattern="file[android-instagram]:*//*" />
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="EntryPointsManager">

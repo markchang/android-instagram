@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/Simplified_BSD.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,17 +76,7 @@
     <favorites_list name="android-instagram" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="40" selection-start="596" selection-end="596" vertical-scroll-proportion="0.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -96,16 +96,16 @@
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageDownloader.java" />
         <option value="$PROJECT_DIR$/res/menu/main_activity_menu.xml" />
         <option value="$PROJECT_DIR$/res/layout/image_list.xml" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/image_list_item.xml" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
       </list>
     </option>
   </component>
@@ -162,6 +162,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -202,60 +204,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -265,7 +215,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="ExportedApkPath" value="$PROJECT_DIR$/out/android-instagram.apk" />
-    <property name="options.lastSelected" value="preferences.editor" />
+    <property name="options.lastSelected" value="copyright" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="ExportedModule" value="android-instagram" />
@@ -276,8 +226,8 @@
     <property name="AndroidTargetDevices" value="emulator-5554" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -482,20 +432,20 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24909747" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39973614" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24909747" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891696" sideWeight="0.6701847" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24187726" sideWeight="0.67150396" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2463899" sideWeight="0.6741425" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39973614" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32717678" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32628798" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39973614" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -574,84 +524,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/image_list.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="39" selection-start="354" selection-end="354" vertical-scroll-proportion="0.12782957">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="40" selection-start="3586" selection-end="3586" vertical-scroll-proportion="2.0402684">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="99" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.33519554">
-          <folding />
-        </state>
+        <state line="8" column="39" selection-start="354" selection-end="354" vertical-scroll-proportion="0.12782957" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/image_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="0" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.97119343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="47" selection-start="265" selection-end="265" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="11" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.3340471">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="46" selection-start="29" selection-end="29" vertical-scroll-proportion="0.025695931">
-          <folding />
-        </state>
+        <state line="34" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gen/org/acmelab/andgram/R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="32" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.33333334">
+        <state line="30" column="32" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.33333334" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="2419" selection-end="2419" vertical-scroll-proportion="0.75" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="40" selection-start="596" selection-end="596" vertical-scroll-proportion="0.16460906">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="41" selection-start="1620" selection-end="1620" vertical-scroll-proportion="0.33333334">
+        <state line="78" column="32" selection-start="3212" selection-end="3212" vertical-scroll-proportion="0.68715084">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2419" selection-end="2419" vertical-scroll-proportion="0.75">
+        <state line="63" column="11" selection-start="2876" selection-end="2876" vertical-scroll-proportion="0.68715084">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="40" selection-start="596" selection-end="596" vertical-scroll-proportion="0.25">
+        <state line="133" column="40" selection-start="5178" selection-end="5178" vertical-scroll-proportion="2.178771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1973" selection-end="1973" vertical-scroll-proportion="0.55307263">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1973" selection-end="1973" vertical-scroll-proportion="0.55307263">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1587" selection-end="1973" vertical-scroll-proportion="0.55307263">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="1370" selection-end="1370" vertical-scroll-proportion="0.3621399">
           <folding />
         </state>
       </provider>
@@ -659,26 +601,9 @@
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="Copyright.UI">
         <settings>
-          <splitter-proportions />
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Android (android-instagram)|Android</last-edited>
+          <last-edited>Simplified BSD</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -700,45 +625,19 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.6</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Android|android-instagram</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Apache HTTP</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ScopeChooserConfigurable.UI">
         <settings>
-          <splitter-proportions />
+          <last-edited>android-instagram</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+          <order>
+            <scope name="android-instagram" />
+          </order>
         </settings>
       </state>
     </states>

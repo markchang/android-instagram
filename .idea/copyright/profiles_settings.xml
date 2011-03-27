@@ -1,5 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="">
-    <module2copyright />
+  <settings default="Simplified BSD">
+    <module2copyright>
+      <element module="android-instagram" copyright="Simplified BSD" />
+    </module2copyright>
   </settings>
 </component>
