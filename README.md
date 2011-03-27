@@ -10,6 +10,6 @@ anything else. If you want it to, just leave a comment or shoot me an email.
 
 Resources:
 
-* [[https://github.com/mislav/instagram/wiki]]
-* [[http://instagram.com/developer/]]
+* https://github.com/mislav/instagram/wiki
+* http://instagram.com/developer/
 
