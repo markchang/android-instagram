@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="removed unused prefere">
+    <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" afterPath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,7 +83,17 @@
     <favorites_list name="android-instagram" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="76" selection-start="393" selection-end="393" vertical-scroll-proportion="0.2">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -98,7 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageAdapter.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageDownloader.java" />
         <option value="$PROJECT_DIR$/res/layout/image_list_item.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
@@ -114,6 +122,7 @@
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/MainActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/image_list.xml" />
         <option value="$PROJECT_DIR$/res/menu/main_activity_menu.xml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -504,7 +513,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="22" width="1156" height="878" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -515,7 +524,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891696" sideWeight="0.6701847" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2463899" sideWeight="0.67150396" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2463899" sideWeight="0.67150396" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32849604" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32585752" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
@@ -541,7 +550,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unused preferences menu option" />
+    <option name="LAST_COMMIT_MESSAGE" value="added version number to application header" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -559,6 +568,7 @@
     <MESSAGE value="added minsdkversion for 2.1" />
     <MESSAGE value="removed clear cache button" />
     <MESSAGE value="removed unused preferences menu option" />
+    <MESSAGE value="added version number to application header" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -580,11 +590,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/image_list_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="28" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gen/org/acmelab/andgram/R.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="32" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.33333334" />
@@ -684,6 +689,13 @@
     <entry file="file://$PROJECT_DIR$/res/menu/main_activity_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="35" selection-start="777" selection-end="777" vertical-scroll-proportion="0.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="76" selection-start="393" selection-end="393" vertical-scroll-proportion="0.2">
           <folding />
         </state>
       </provider>
