@@ -16,10 +16,10 @@
         android:title="@string/main_menu_credentials"
         android:icon="@drawable/ic_menu_login"
         />
-    <item
-        android:id="@+id/preferences"
-        android:title="@string/main_menu_preferences"
-        android:icon="@drawable/ic_menu_preferences"
-        />
+    <!--<item-->
+        <!--android:id="@+id/preferences"-->
+        <!--android:title="@string/main_menu_preferences"-->
+        <!--android:icon="@drawable/ic_menu_preferences"-->
+        <!--/>-->
 
 </menu>

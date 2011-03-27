@@ -123,8 +123,6 @@ public class MainActivity extends Activity
             case R.id.clear:
                 doClear();
                 return true;
-            case R.id.preferences:
-                return true;
             case R.id.credentials:
                 Utils.launchCredentials(getApplicationContext());
                 return true;
