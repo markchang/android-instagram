@@ -12,4 +12,10 @@
     <string name="default_comment">Taken by Andgram</string>
     <string name="activity">Activity</string>
     <string name="empty">empty</string>
+    <string name="no_registration_disclaimer">
+        This application does not support the creation of new Instagram accounts.
+        That portion of the undocumented API has not yet been reverse-engineered.
+        You will need to use an iOS device (such as an iPhone) in order to create
+        an account.
+    </string>
 </resources>

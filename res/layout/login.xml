@@ -15,6 +15,20 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="@string/no_registration_disclaimer"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        />
+    <View
+        android:layout_height="2dip"
+        android:layout_width="fill_parent"
+        android:background="#15317E"
+        android:layout_marginBottom="2dip"
+        android:layout_marginTop="2dip"
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Username"
         android:textSize="15sp"
         />
