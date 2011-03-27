@@ -268,6 +268,9 @@ public class MainActivity extends Activity
     }
 
     private void doImageResizeAndRound() {
+        Bitmap croppedBitmap;
+        Bitmap roundedBitmap;
+
         StringBuilder imageFileName = new StringBuilder();
         StringBuilder croppedImageFileName = new StringBuilder();
         imageFileName.append(Environment.getExternalStorageDirectory() + "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
@@ -283,23 +286,30 @@ public class MainActivity extends Activity
         int startX = srcWidth/2 - desiredWidth/2;
         int startY = srcHeight/2 - desiredWidth/2;
 
-        Bitmap croppedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
-        Bitmap roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
+        if( desiredWidth <= srcWidth || desiredWidth <= srcHeight ) {
+            Log.i(Utils.TAG,"Cropping and resizing image");
+            croppedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
+            roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
 
-        // Save
-        try {
-            File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_CROPPED);
-            croppedImageUri = Uri.fromFile(outputFile);
+            // Save
+            try {
+                File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_CROPPED);
+                croppedImageUri = Uri.fromFile(outputFile);
 
-            FileOutputStream out = new FileOutputStream(croppedImageFileName.toString());
-            roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
-                    Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
-            roundedBitmap.recycle();
-            srcBitmap.recycle();
-            Log.i(TAG,"Processed image, now returning");
-        } catch( Exception e ) {
+                FileOutputStream out = new FileOutputStream(croppedImageFileName.toString());
+                roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
+                        Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
+                roundedBitmap.recycle();
+                srcBitmap.recycle();
+                Log.i(TAG,"Processed image, now returning");
+            } catch( Exception e ) {
 
+            }
+        } else {
+            Log.i(Utils.TAG, "Small image, leaving alone");
+            croppedImageUri = imageUri;
         }
+
     }
 
     private Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
