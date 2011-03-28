@@ -80,9 +80,9 @@ public class LazyAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        View vi=convertView;
+        View vi = convertView;
         ViewHolder holder;
-        if(convertView==null){
+        if(convertView == null){
             vi = inflater.inflate(R.layout.image_list_item, null);
             holder = new ViewHolder();
             holder.image = (ImageView)vi.findViewById(R.id.image);

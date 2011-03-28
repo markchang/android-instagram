@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Actionbar">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../android-actionbar/actionbar/src" />
+    </SOURCES>
+  </library>
+</component>

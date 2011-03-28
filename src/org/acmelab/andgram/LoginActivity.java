@@ -47,7 +47,6 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -55,7 +54,6 @@ import org.json.JSONTokener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +82,8 @@ public class LoginActivity extends Activity {
     }
 
     public void openMainActivity() {
-        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        // Intent mainIntent = new Intent(LoginActivity.this, TakePictureActivity.class);
+        Intent mainIntent = new Intent(LoginActivity.this, DashboardActivity.class);
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(mainIntent);
     }

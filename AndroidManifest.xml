@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.acmelab.andgram"
-      android:versionCode="2"
-      android:versionName="1.1">
+      android:versionCode="3"
+      android:versionName="1.2">
 
     <uses-feature android:name="android.hardware.camera"></uses-feature>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -13,7 +13,7 @@
                  android:icon="@drawable/icon"
                  android:theme="@android:style/Theme.Light.NoTitleBar"
             >
-        <activity android:name=".MainActivity">
+        <activity android:name=".TakePictureActivity">
         </activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -22,5 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ImageListActivity"/>
+        <activity android:name=".DashboardActivity"/>
     </application>
 </manifest> 

@@ -45,6 +45,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.markupartist.android.widget.ActionBar;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -67,7 +68,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends Activity
+public class TakePictureActivity extends Activity
 {
     private static final String TAG = Utils.TAG;
 
@@ -79,13 +80,14 @@ public class MainActivity extends Activity
     private Uri imageUri = null;
     private Uri croppedImageUri = null;
     private boolean imageReady = false;
+    private ActionBar actionBar;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.take_picture);
 
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.useragent", "Instagram");
@@ -94,37 +96,35 @@ public class MainActivity extends Activity
         imageView = (ImageView)findViewById(R.id.imageView);
         uploadButton = (Button)findViewById(R.id.btnUpload);
 
-
         // create the output dir for us
         File outputDirectory = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR);
         outputDirectory.mkdirs();
+
+        Intent dashboardIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+        dashboardIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        actionBar = (ActionBar) findViewById(R.id.pictureActionbar);
+        actionBar.setTitle(R.string.activity);
+        final ActionBar.Action goHomeAction = new ActionBar.IntentAction(this,
+                dashboardIntent, R.drawable.ic_title_home_default);
+        actionBar.addAction(goHomeAction);
+
+        // start camera picture taking intent
+        takePicture(null);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_menu, menu);
+        inflater.inflate(R.menu.take_picture_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch( item.getItemId() ) {
-            case R.id.show_activity:
-                if( Utils.isOnline(getApplicationContext()) == false ) {
-                    Toast.makeText(MainActivity.this,
-                        "No connection to Internet.\nTry again later.",
-                        Toast.LENGTH_SHORT).show();
-                    Log.i(Utils.TAG, "No internet, didn't start ActivityView");
-                    return false;
-                } else
-                    startActivity(new Intent(getApplicationContext(), ImageListActivity.class));
-                return true;
             case R.id.clear:
                 doClear();
-                return true;
-            case R.id.credentials:
-                Utils.launchCredentials(getApplicationContext());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -156,7 +156,7 @@ public class MainActivity extends Activity
 
     public void startUpload(View view) {
         if( Utils.isOnline(getApplicationContext()) == false ) {
-            Toast.makeText(MainActivity.this,
+            Toast.makeText(TakePictureActivity.this,
                 "No connection to Internet.\nTry again later.",
                 Toast.LENGTH_SHORT);
             Log.i(Utils.TAG, "No internet, didn't start upload.");
@@ -165,7 +165,7 @@ public class MainActivity extends Activity
 
         Log.i(TAG, "Starting async upload");
         if( !Utils.doLogin(getApplicationContext(), httpClient) ) {
-            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TakePictureActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
         } else {
             new UploadPhotoTask().execute();
         }
@@ -356,8 +356,9 @@ public class MainActivity extends Activity
 
             // turn on upload button
             uploadButton.setEnabled(true);
+
         } catch ( Exception e ) {
-            Toast.makeText(MainActivity.this, "Camera error", Toast.LENGTH_LONG).show();
+            Toast.makeText(TakePictureActivity.this, "Camera error", Toast.LENGTH_LONG).show();
             Log.e(TAG, "Camera error: " + e.toString() );
             doClear();
         }
@@ -383,7 +384,7 @@ public class MainActivity extends Activity
     private class UploadPhotoTask extends AsyncTask<Void, Void, Map<String, String>> {
 
         protected void onPreExecute() {
-            Toast.makeText(MainActivity.this, "Uploading", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TakePictureActivity.this, "Uploading", Toast.LENGTH_SHORT).show();
         }
 
         protected Map<String,String> doInBackground(Void... voids) {
@@ -391,8 +392,12 @@ public class MainActivity extends Activity
         }
 
         protected void onPostExecute(Map<String,String> resultMap) {
-            Toast.makeText(MainActivity.this, resultMap.get("result"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(TakePictureActivity.this, resultMap.get("result"), Toast.LENGTH_SHORT).show();
         }
     }
 
+    public void onDestroy() {
+        doClear();
+        super.onDestroy();
+    }
 }

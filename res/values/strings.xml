@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Andgram</string>
+    <string name="app_header">Andgram v1.1</string>
+
     <string name="main_menu_credentials">Credentials</string>
     <string name="main_menu_refresh">Refresh</string>
     <string name="main_menu_preferences">Preferences</string>
     <string name="main_menu_clear">Clear</string>
+
     <string name="take_picture">Take Picture</string>
-    <string name="app_header">Andgram v1.1</string>
     <string name="upload">Upload</string>
     <string name="comment">Comment</string>
     <string name="default_comment">Taken by Andgram</string>
     <string name="activity">Activity</string>
     <string name="empty">empty</string>
+
+    <string name="dashboard">Dashboard</string>
+    <string name="login">Login</string>
+
     <string name="no_registration_disclaimer">
         This application does not support the creation of new Instagram accounts.
         That portion of the undocumented API has not yet been reverse-engineered.
         You will need to use an iOS device (such as an iPhone) in order to create
         an account.
     </string>
+
 </resources>

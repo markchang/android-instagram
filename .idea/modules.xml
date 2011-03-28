@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../android-actionbar/actionbar/actionbar.iml" filepath="$PROJECT_DIR$/../android-actionbar/actionbar/actionbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-instagram.iml" filepath="$PROJECT_DIR$/android-instagram.iml" />
     </modules>
   </component>
