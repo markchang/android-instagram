@@ -40,4 +40,9 @@
     <color name="session_foreground_past">#ff999999</color>
 
     <color name="pinned_header_background">#ff202020</color>
+
+    <color name="actionbar_separator">#3A5FCD</color>
+    <color name="actionbar_background_start">#3A5FCD</color>
+    <color name="actionbar_background_end">#27408B</color>
+
 </resources>
