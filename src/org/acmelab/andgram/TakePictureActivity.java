@@ -284,7 +284,7 @@ public class TakePictureActivity extends Activity
         int startX = srcWidth/2 - desiredWidth/2;
         int startY = srcHeight/2 - desiredWidth/2;
 
-        if( desiredWidth <= srcWidth || desiredWidth <= srcHeight ) {
+        if( desiredWidth <= srcWidth && desiredWidth <= srcHeight ) {
             Log.i(Utils.TAG,"Cropping and resizing image");
             croppedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
             roundedBitmap = getRoundedCornerBitmap(croppedBitmap);

@@ -87,7 +87,7 @@ public class ImageListActivity extends Activity {
                 dashboardIntent, R.drawable.ic_title_home_default);
         actionBar.addAction(goHomeAction);
         list=(ListView)findViewById(R.id.list);
-        list.setOnItemClickListener(myClickListener);
+        //list.setOnItemClickListener(myClickListener);
 
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.useragent", "Instagram");
@@ -102,6 +102,7 @@ public class ImageListActivity extends Activity {
         list.setAdapter(adapter);
         new FetchActivity().execute();
     }
+
 
     public AdapterView.OnItemClickListener myClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
