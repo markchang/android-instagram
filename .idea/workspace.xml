@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="work">
+    <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="really fixed low-res image FC.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +71,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="30" selection-start="204" selection-end="204" vertical-scroll-proportion="0.06847361">
+            <state line="27" column="0" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.46219686">
               <folding />
             </state>
           </provider>
@@ -549,7 +547,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="made actionbar blue" />
+    <option name="LAST_COMMIT_MESSAGE" value="really fixed low-res image FC." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -570,6 +568,7 @@
     <MESSAGE value="added version number to application header" />
     <MESSAGE value="added some sensible readme infos." />
     <MESSAGE value="made actionbar blue" />
+    <MESSAGE value="really fixed low-res image FC." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -688,7 +687,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="30" selection-start="204" selection-end="204" vertical-scroll-proportion="0.06847361">
+        <state line="27" column="0" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.46219686">
           <folding />
         </state>
       </provider>
