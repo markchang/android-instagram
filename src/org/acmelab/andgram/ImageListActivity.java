@@ -36,6 +36,8 @@
 package org.acmelab.andgram;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,12 +51,15 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,6 +87,7 @@ public class ImageListActivity extends Activity {
                 dashboardIntent, R.drawable.ic_title_home_default);
         actionBar.addAction(goHomeAction);
         list=(ListView)findViewById(R.id.list);
+        list.setOnItemClickListener(myClickListener);
 
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.useragent", "Instagram");
@@ -96,6 +102,28 @@ public class ImageListActivity extends Activity {
         list.setAdapter(adapter);
         new FetchActivity().execute();
     }
+
+    public AdapterView.OnItemClickListener myClickListener = new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Log.i(Utils.TAG, "Clicked: " + String.valueOf(i));
+            InstagramImage instagramImage = (InstagramImage)adapter.getItem(i);
+            String username = Utils.getUsername(getApplicationContext());
+
+            // build dialog
+            final CharSequence[] items = {"Like", "Unlike"};
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(ImageListActivity.this);
+            builder.setTitle("Pick a color");
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int item) {
+                    Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+
+        }
+    };
 
     @Override
     public void onDestroy()
@@ -171,45 +199,67 @@ public class ImageListActivity extends Activity {
                             JSONArray items = jsonObject.getJSONArray("items");
 
                             // get image URLs and commentary
-                            JSONObject entry;
-                            JSONArray imageVersions;
-                            JSONObject bigImage;
-                            JSONObject user;
-                            JSONArray comments;
-                            JSONObject comment;
-                            StringBuilder commentString;
-
-
                             for( int i=0; i< items.length(); i++ ) {
                                 // create a new instance
                                 InstagramImage instagramImage = new InstagramImage();
 
                                 // image
-                                entry = (JSONObject)items.get(i);
-                                imageVersions = entry.getJSONArray("image_versions");
-                                bigImage = (JSONObject)imageVersions.get(0);
-                                instagramImage.setUrl(bigImage.getString("url"));
+                                JSONObject entry = (JSONObject)items.get(i);
+                                JSONArray imageVersions = entry.getJSONArray("image_versions");
+                                JSONObject bigImage = (JSONObject)imageVersions.get(0);
+                                instagramImage.url = bigImage.getString("url");
 
                                 // user
-                                user = entry.getJSONObject("user");
-                                instagramImage.setUsername(user.getString("full_name"));
+                                JSONObject user = entry.getJSONObject("user");
+                                instagramImage.username = user.getString("full_name");
+
+                                // date taken_at
+                                Long dateLong = entry.getLong("taken_at");
+                                SimpleDateFormat formatter = new SimpleDateFormat("MMMM d, yyyy HH:mm");
+                                instagramImage.taken_at = formatter.format(new Date(dateLong * 1000L));
 
                                 // comments (and caption)
-                                comments = entry.getJSONArray("comments");
+                                JSONArray comments = entry.getJSONArray("comments");
                                 if( comments != null ) {
-                                    commentString = new StringBuilder();
+                                    StringBuilder commentString = new StringBuilder();
                                     for( int c=0; c < comments.length(); c++ ) {
-                                        comment = comments.getJSONObject(c);
+                                        JSONObject comment = comments.getJSONObject(c);
+                                        user = comment.getJSONObject("user");
                                         if(c==0) {
-                                            instagramImage.setCaption(comment.getString("text"));
+                                            instagramImage.caption = "<b>" + user.getString("username") + "</b> " +
+                                                    comment.getString("text");
                                         } else {
-                                            user = comment.getJSONObject("user");
-                                            commentString.append("\n"+user.getString("full_name") + ": ");
-                                            commentString.append(comment.getString("text"));
+                                            commentString.append("<b>" + user.getString("username") + "</b> ");
+                                            commentString.append(comment.getString("text") + "<br />");
                                         }
                                     }
-                                    instagramImage.setComments(commentString.toString());
+                                    instagramImage.comments = commentString.toString();
                                 }
+
+                                // likers
+                                try {
+                                    JSONArray liker_ids = entry.getJSONArray("liker_ids");
+                                    if( liker_ids != null) {
+                                        instagramImage.likers = "<b>Liked by " + liker_ids.length() +
+                                                " people</b>";
+                                    }
+                                } catch( JSONException j ) {}
+
+                                try {
+                                    JSONArray likers = entry.getJSONArray("likers");
+                                    if( likers != null ) {
+                                        StringBuilder likerString = new StringBuilder();
+                                        if( likers.length() > 0 ) {
+                                            likerString.append("Liked by: <b>");
+                                            for( int l=0; l < likers.length(); l++ ) {
+                                                JSONObject like = likers.getJSONObject(l);
+                                                likerString.append(like.getString("username") + " ");
+                                            }
+                                            likerString.append("</b>");
+                                            instagramImage.likers = likerString.toString();
+                                        }
+                                    }
+                                } catch( JSONException j ) {}
 
                                 instagramImageList.add(instagramImage);
                             }

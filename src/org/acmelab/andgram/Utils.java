@@ -108,6 +108,17 @@ public class Utils {
         ctx.startActivity(loginIntent);
     }
 
+    public static String getUsername(Context ctx) {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(PREFS_NAME, Activity.MODE_PRIVATE);
+        Boolean loginValid = sharedPreferences.getBoolean("loginValid",false);
+
+        if( loginValid ) {
+            return sharedPreferences.getString("username",null);
+        } else {
+            return null;
+        }
+    }
+
 
 
     public static boolean doLogin(Context ctx, DefaultHttpClient httpClient) {

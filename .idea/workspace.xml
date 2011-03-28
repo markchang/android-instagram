@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="work">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../android-actionbar/actionbar/actionbar.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../android-actionbar/actionbar/build.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android-actionbar/actionbar/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../android-actionbar/actionbar/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android-actionbar/actionbar/default.properties" afterPath="$PROJECT_DIR$/../android-actionbar/actionbar/default.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../android-actionbar/actionbar/src/com/markupartist/android/widget/ActionBar.java" afterPath="$PROJECT_DIR$/../android-actionbar/actionbar/src/com/markupartist/android/widget/ActionBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/colors.xml" afterPath="$PROJECT_DIR$/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/markupartist/android/widget/actionbar/R.java" afterPath="$PROJECT_DIR$/gen/com/markupartist/android/widget/actionbar/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" afterPath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/image_list_item.xml" afterPath="$PROJECT_DIR$/res/layout/image_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,10 +74,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="colors.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+      <file leaf-file-name="InstagramImage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.7572017">
+            <state line="43" column="30" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageListActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="47" selection-start="4775" selection-end="4775" vertical-scroll-proportion="2.2004263">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LazyAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="35" selection-start="2963" selection-end="2963" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="225" column="35" selection-start="8431" selection-end="8431" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -96,22 +124,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/DashboardLayout.java" />
-        <option value="$PROJECT_DIR$/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/login.xml" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/DashboardActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/dashboard_home.xml" />
         <option value="$PROJECT_DIR$/res/layout/image_list.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
         <option value="$PROJECT_DIR$/res/menu/take_picture_menu.xml" />
         <option value="$PROJECT_DIR$/res/layout/take_picture.xml" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/res/layout/image_list_item.xml" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
       </list>
     </option>
   </component>
@@ -168,6 +196,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,24 +250,6 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -262,47 +273,11 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="android-instagram" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actionbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="android-instagram">
           <PATH>
@@ -329,22 +304,22 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="67" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="76" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="76" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="ExportedApkPath" value="$PROJECT_DIR$/out/android-instagram.apk" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="73" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="ExportedApkPath" value="$PROJECT_DIR$/out/android-instagram.apk" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="ExportedModule" value="android-instagram" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="79" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="852" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="856" />
@@ -354,12 +329,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="AndroidTargetDevices" value="HT05NHL02678" />
+    <property name="AndroidTargetDevices" value="emulator-5554" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -566,7 +541,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="22" width="1156" height="878" extended-state="0" />
+    <frame x="126" y="22" width="1156" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -578,10 +553,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891696" sideWeight="0.6701847" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3366426" sideWeight="0.67150396" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30234656" sideWeight="0.6741425" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849604" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32585752" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32585752" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -604,7 +579,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some sensible readme infos." />
+    <option name="LAST_COMMIT_MESSAGE" value="made actionbar blue" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -624,6 +599,7 @@
     <MESSAGE value="removed unused preferences menu option" />
     <MESSAGE value="added version number to application header" />
     <MESSAGE value="added some sensible readme infos." />
+    <MESSAGE value="made actionbar blue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -645,36 +621,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="8" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.75" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/image_list_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="33" selection-start="1670" selection-end="1678" vertical-scroll-proportion="0.76954734" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="4574" selection-end="4733" vertical-scroll-proportion="0.35055867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="26" selection-start="3386" selection-end="3386" vertical-scroll-proportion="0.7849162" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="39" selection-start="753" selection-end="753" vertical-scroll-proportion="0.2962963" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tmp/android-imagedownloader-read-only/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="24" selection-start="1824" selection-end="1824" vertical-scroll-proportion="0.45679012" />
@@ -685,52 +631,90 @@
         <state line="8" column="0" selection-start="255" selection-end="255" vertical-scroll-proportion="0.13168724" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/image_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="43" selection-start="318" selection-end="318" vertical-scroll-proportion="0.1826087" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/dashboard_home.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="73" selection-start="120" selection-end="195" vertical-scroll-proportion="0.075" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="44" selection-start="3869" selection-end="3869" vertical-scroll-proportion="0.102345414" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/take_picture.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="14" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.6939351">
-          <folding />
-        </state>
+        <state line="41" column="14" selection-start="1494" selection-end="1494" vertical-scroll-proportion="0.6939351" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="9" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.43575418">
-          <folding />
-        </state>
+        <state line="26" column="9" selection-start="1264" selection-end="1264" vertical-scroll-proportion="0.43575418" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="34" selection-start="4586" selection-end="4586" vertical-scroll-proportion="0.016759777">
-          <folding />
-        </state>
+        <state line="110" column="34" selection-start="4586" selection-end="4586" vertical-scroll-proportion="0.016759777" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/DashboardActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="38" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.80246913">
-          <folding />
-        </state>
+        <state line="54" column="38" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.80246913" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.7572017">
+        <state line="46" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/image_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="43" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../android-sdk/platforms/android-2.1/android.jar!/android/widget/ListView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="39" selection-start="5057" selection-end="5057" vertical-scroll-proportion="0.64402175">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="30" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/image_list_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="28" selection-start="1016" selection-end="1016" vertical-scroll-proportion="0.45698166">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="225" column="35" selection-start="8431" selection-end="8431" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="35" selection-start="2963" selection-end="2963" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="18" selection-start="4798" selection-end="4798" vertical-scroll-proportion="0.67114097">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="47" selection-start="4775" selection-end="4775" vertical-scroll-proportion="2.2004263">
           <folding />
         </state>
       </provider>

@@ -81,12 +81,12 @@ containing a value of this type.
         public static final int btnPicture=0x7f090018;
         public static final int btnUpload=0x7f090019;
         public static final int camera_button=0x7f09000c;
-        public static final int caption=0x7f090011;
+        public static final int caption=0x7f090012;
         public static final int captionRow=0x7f09001a;
         public static final int clear=0x7f09001e;
         public static final int comments=0x7f090013;
         public static final int dashboardActionbar=0x7f09000a;
-        public static final int image=0x7f090010;
+        public static final int image=0x7f090011;
         public static final int imageListActionbar=0x7f09000e;
         public static final int imageView=0x7f09001d;
         public static final int lblCaption=0x7f09001b;
@@ -97,7 +97,7 @@ containing a value of this type.
         public static final int txtCaption=0x7f09001c;
         public static final int txtPassword=0x7f090015;
         public static final int txtUsername=0x7f090014;
-        public static final int username=0x7f090012;
+        public static final int username=0x7f090010;
     }
     public static final class layout {
         public static final int actionbar=0x7f030000;

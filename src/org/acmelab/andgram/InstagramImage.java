@@ -36,41 +36,10 @@ package org.acmelab.andgram;
  * To change this template use File | Settings | File Templates.
  */
 public class InstagramImage {
-    private String url;
-    private String username;
-    private String comments;
-    private String caption;
-
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
+    public String url = "";
+    public String username = "";
+    public String comments = "";
+    public String caption = "";
+    public String taken_at = "";
+    public String likers = "";
 }

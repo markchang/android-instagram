@@ -37,6 +37,7 @@ package org.acmelab.andgram;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,7 @@ public class LazyAdapter extends BaseAdapter {
     }
 
     public Object getItem(int position) {
-        return position;
+        return instagramImageArrayList.get(position);
     }
 
     public long getItemId(int position) {
@@ -92,14 +93,17 @@ public class LazyAdapter extends BaseAdapter {
             vi.setTag(holder);
         }
         else
-            holder=(ViewHolder)vi.getTag();
+            holder = (ViewHolder)vi.getTag();
 
-        holder.image.setTag(instagramImageArrayList.get(position).getUrl());
-        holder.username.setText(instagramImageArrayList.get(position).getUsername());
-        holder.caption.setText(instagramImageArrayList.get(position).getCaption());
-        holder.comments.setText(instagramImageArrayList.get(position).getComments());
+        holder.image.setTag(instagramImageArrayList.get(position).url);
+        holder.username.setText(Html.fromHtml("<b>" + instagramImageArrayList.get(position).username + "</b>") +
+            " taken " + instagramImageArrayList.get(position).taken_at);
+        holder.caption.setText(Html.fromHtml(instagramImageArrayList.get(position).caption));
+        holder.comments.setText(Html.fromHtml(
+                instagramImageArrayList.get(position).likers + "<br />" +
+                instagramImageArrayList.get(position).comments));
 
-        imageLoader.DisplayImage(instagramImageArrayList.get(position).getUrl(), activity, holder.image);
+        imageLoader.DisplayImage(instagramImageArrayList.get(position).url, activity, holder.image);
 
         return vi;
     }
