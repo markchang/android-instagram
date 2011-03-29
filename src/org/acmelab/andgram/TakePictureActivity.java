@@ -106,7 +106,7 @@ public class TakePictureActivity extends Activity
         actionBar = (ActionBar) findViewById(R.id.pictureActionbar);
         actionBar.setTitle(R.string.activity);
         final ActionBar.Action goHomeAction = new ActionBar.IntentAction(this,
-                dashboardIntent, R.drawable.ic_title_home_default);
+                dashboardIntent, R.drawable.ic_title_home);
         actionBar.addAction(goHomeAction);
 
         // start camera picture taking intent

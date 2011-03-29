@@ -57,14 +57,16 @@ containing a value of this type.
         public static final int ic_menu_camera=0x7f020005;
         public static final int ic_menu_compose=0x7f020006;
         public static final int ic_menu_delete=0x7f020007;
-        public static final int ic_menu_login=0x7f020008;
-        public static final int ic_menu_preferences=0x7f020009;
-        public static final int ic_menu_refresh=0x7f02000a;
-        public static final int ic_menu_slideshow=0x7f02000b;
-        public static final int ic_title_camera=0x7f02000c;
-        public static final int ic_title_home_default=0x7f02000d;
-        public static final int icon=0x7f02000e;
-        public static final int stub=0x7f02000f;
+        public static final int ic_menu_home=0x7f020008;
+        public static final int ic_menu_login=0x7f020009;
+        public static final int ic_menu_preferences=0x7f02000a;
+        public static final int ic_menu_refresh=0x7f02000b;
+        public static final int ic_menu_slideshow=0x7f02000c;
+        public static final int ic_title_camera=0x7f02000d;
+        public static final int ic_title_home=0x7f02000e;
+        public static final int ic_title_refresh=0x7f02000f;
+        public static final int icon=0x7f020010;
+        public static final int stub=0x7f020011;
     }
     public static final class id {
         public static final int actionbar_actions=0x7f090006;

@@ -48,8 +48,10 @@ import com.markupartist.android.widget.ActionBar;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,8 +62,7 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class ImageListActivity extends Activity {
 
@@ -83,11 +84,13 @@ public class ImageListActivity extends Activity {
 
         actionBar = (ActionBar) findViewById(R.id.imageListActionbar);
         actionBar.setTitle(R.string.activity);
+        actionBar.addAction(new RefreshAction());
         final ActionBar.Action goHomeAction = new ActionBar.IntentAction(this,
-                dashboardIntent, R.drawable.ic_title_home_default);
+                dashboardIntent, R.drawable.ic_title_home);
         actionBar.addAction(goHomeAction);
+
         list=(ListView)findViewById(R.id.list);
-        list.setOnItemClickListener(myClickListener);
+        list.setOnItemClickListener(itemClickListener);
 
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.useragent", "Instagram");
@@ -110,7 +113,7 @@ public class ImageListActivity extends Activity {
     }
 
 
-    public AdapterView.OnItemClickListener myClickListener = new AdapterView.OnItemClickListener() {
+    public AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Log.i(Utils.TAG, "Clicked: " + String.valueOf(i));
 
@@ -129,7 +132,7 @@ public class ImageListActivity extends Activity {
                 likeString = "Like";
             }
 
-            final CharSequence[] items = {likeString};
+            final CharSequence[] items = {likeString, "Comment"};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(ImageListActivity.this);
             builder.setTitle("Choose your action");
@@ -139,6 +142,8 @@ public class ImageListActivity extends Activity {
                         case 0:
                             likeUnlike(instagramImage, username);
                             break;
+                        case 1:
+                            showCommentDialog(instagramImage, username);
                         default:
                             break;
                     }
@@ -149,6 +154,52 @@ public class ImageListActivity extends Activity {
 
         }
     };
+
+    public void showCommentDialog(InstagramImage image, String username) {
+        final InstagramImage finalImage = image;
+        final String finalUsername = username;
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Comment");
+
+        // Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String comment = input.getText().toString();
+                postComment(comment, finalImage, finalUsername);
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+        alert.show();
+    }
+
+    public void postComment(String comment, InstagramImage image, String username) {
+        List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+        postParams.add(new BasicNameValuePair("comment_text", comment));
+        String jsonResponse = Utils.doRestulPut(httpClient,
+                Utils.createCommentUrl(image.pk),
+                postParams,
+                this);
+        if( jsonResponse != null ) {
+            image.comment_list.add(new Comment(username,comment));
+            Toast.makeText(this,
+                    "Comment successful", Toast.LENGTH_SHORT).show();
+            adapter.notifyDataSetChanged();
+        } else {
+            Toast.makeText(this,
+                    "Comment failed", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void likeUnlike(InstagramImage image, String username) {
         String url;
@@ -282,27 +333,25 @@ public class ImageListActivity extends Activity {
                                 // comments (and caption)
                                 JSONArray comments = entry.getJSONArray("comments");
                                 if( comments != null ) {
-                                    StringBuilder commentString = new StringBuilder();
+                                    ArrayList<Comment> commentList = new ArrayList<Comment>();
                                     for( int c=0; c < comments.length(); c++ ) {
                                         JSONObject comment = comments.getJSONObject(c);
                                         user = comment.getJSONObject("user");
                                         if(c==0) {
-                                            instagramImage.caption = "<b>" + user.getString("username") + "</b> " +
-                                                    comment.getString("text");
+                                            instagramImage.caption = comment.getString("text");
                                         } else {
-                                            commentString.append("<b>" + user.getString("username") + "</b> ");
-                                            commentString.append(comment.getString("text") + "<br />");
+                                            commentList.add(new Comment(user.getString("username"),
+                                                    comment.getString("text")));
                                         }
                                     }
-                                    instagramImage.comments = commentString.toString();
+                                    instagramImage.comment_list = commentList;
                                 }
 
                                 // likers
                                 try {
                                     JSONArray liker_ids = entry.getJSONArray("liker_ids");
                                     if( liker_ids != null) {
-                                        instagramImage.likers = "<b>Liked by " + liker_ids.length() +
-                                                " people</b>";
+
                                     }
                                 } catch( JSONException j ) {}
 
@@ -319,7 +368,6 @@ public class ImageListActivity extends Activity {
                                                 likerList.add(like.getString("username"));
                                             }
                                             likerString.append("</b>");
-                                            instagramImage.likers = likerString.toString();
                                             instagramImage.liker_list = likerList;
                                         }
                                     }
@@ -341,7 +389,16 @@ public class ImageListActivity extends Activity {
                 }
             }
         }
-
     }
 
+    private class RefreshAction implements ActionBar.Action {
+
+        public int getDrawable() {
+            return R.drawable.ic_title_refresh;
+        }
+
+        public void performAction(View view) {
+            refresh();
+        }
+    }
 }

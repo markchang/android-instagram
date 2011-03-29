@@ -77,6 +77,8 @@ public class Utils {
     public static final String LIKE_UNLIKE_PREFIX = "http://instagr.am/api/v1/media/";
     public static final String LIKE_POSTFIX = "/like/";
     public static final String UNLIKE_POSTFIX = "/unlike/";
+    public static final String COMMENT_PREFIX = "http://instagr.am/api/v1/media/";
+    public static final String COMMENT_POSTFIX = "/comment/";
 
 
     public static boolean isOnline(Context ctx) {
@@ -91,6 +93,10 @@ public class Utils {
 
     public static String createUnlikeUrl(String id) {
         return LIKE_UNLIKE_PREFIX + id + UNLIKE_POSTFIX;
+    }
+
+    public static String createCommentUrl(String id) {
+        return COMMENT_PREFIX + id + COMMENT_POSTFIX;
     }
 
     public static void CopyStream(InputStream is, OutputStream os)
@@ -202,6 +208,50 @@ public class Utils {
         }
 
         return true;
+    }
+
+    public static String doRestulPut(DefaultHttpClient httpClient, String url,
+                                     List<NameValuePair> postParams, Context ctx) {
+        // create POST
+        HttpPost httpPost = new HttpPost(url);
+
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(postParams, HTTP.UTF_8));
+            HttpResponse httpResponse = httpClient.execute(httpPost);
+
+            // test result code
+            if( httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK ) {
+                Log.i(TAG, "Login HTTP status fail");
+                return null;
+            }
+
+            // test json response
+            HttpEntity httpEntity = httpResponse.getEntity();
+            if( httpEntity != null ) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent(), "UTF-8"));
+                String json = reader.readLine();
+                JSONTokener jsonTokener = new JSONTokener(json);
+                JSONObject jsonObject = new JSONObject(jsonTokener);
+                Log.i(TAG,"JSON: " + jsonObject.toString());
+
+                String loginStatus = jsonObject.getString("status");
+
+                if( !loginStatus.equals("ok") ) {
+                    Log.e(TAG, "JSON status not ok: " + jsonObject.getString("status"));
+                    return null;
+                } else {
+                    return json;
+                }
+            } else {
+                return null;
+            }
+        } catch( IOException e ) {
+            Log.e(TAG, "HttpPost error: " + e.toString());
+            return null;
+        } catch( JSONException e ) {
+            Log.e(TAG, "JSON parse error: " + e.toString());
+            return null;
+        }
     }
 
     public static String doRestfulGet(DefaultHttpClient httpClient, String url, Context ctx) {

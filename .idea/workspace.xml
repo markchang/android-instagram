@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/Comment.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_title_home_default.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/markupartist/android/widget/actionbar/R.java" afterPath="$PROJECT_DIR$/gen/com/markupartist/android/widget/actionbar/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" afterPath="$PROJECT_DIR$/gen/org/acmelab/andgram/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,7 +76,44 @@
     <favorites_list name="android-instagram" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ImageListActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="145" column="70" selection-start="5986" selection-end="5986" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="98" column="53" selection-start="4600" selection-end="4600" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstagramImage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="0" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LazyAdapter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="121" column="39" selection-start="5015" selection-end="5015" vertical-scroll-proportion="2.5517242">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -80,20 +127,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/dashboard_home.xml" />
-        <option value="$PROJECT_DIR$/res/layout/image_list.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/menu/take_picture_menu.xml" />
         <option value="$PROJECT_DIR$/res/layout/take_picture.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/res/layout/image_list_item.xml" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/SerializedCookie.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
-        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Pair.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/Comment.java" />
+        <option value="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
         <option value="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
       </list>
@@ -172,20 +219,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android-instagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tmp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -512,8 +545,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="22" width="1177" height="850" extended-state="0" />
-    <editor active="false" />
+    <frame x="58" y="22" width="1230" height="858" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -524,9 +557,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891696" sideWeight="0.6701847" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25332153" sideWeight="0.6726027" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24196278" sideWeight="0.6734417" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32739726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32465753" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -595,18 +628,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/DashboardActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="38" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.80246913" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="2374" selection-end="2374" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/image_list.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="43" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
@@ -624,20 +645,6 @@
     <entry file="file://$PROJECT_DIR$/res/layout/image_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="28" selection-start="1016" selection-end="1016" vertical-scroll-proportion="0.45698166">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="63" selection-start="12211" selection-end="12211" vertical-scroll-proportion="0.8197674">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1294" selection-end="1294" vertical-scroll-proportion="0.46219686">
           <folding />
         </state>
       </provider>
@@ -672,37 +679,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="38" selection-start="4321" selection-end="4321" vertical-scroll-proportion="0.0">
+        <state line="5" column="6" selection-start="206" selection-end="206" vertical-scroll-proportion="0.12987013">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/DashboardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="38" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.79457915">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="11" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
+        <state line="65" column="11" selection-start="2904" selection-end="2904" vertical-scroll-proportion="-0.9221557">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/TakePictureActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="35" selection-start="4657" selection-end="4657" vertical-scroll-proportion="0.40843022">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="13" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.30813125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="39" selection-start="6975" selection-end="6975" vertical-scroll-proportion="0.5612472">
+        <state line="145" column="70" selection-start="5986" selection-end="5986" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="1.1314031">
+        <state line="98" column="53" selection-start="4600" selection-end="4600" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="32" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.4935065">
+        <state line="42" column="0" selection-start="1895" selection-end="1895" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="39" selection-start="5015" selection-end="5015" vertical-scroll-proportion="2.5517242">
           <folding />
         </state>
       </provider>

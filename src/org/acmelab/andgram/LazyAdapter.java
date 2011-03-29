@@ -100,7 +100,7 @@ public class LazyAdapter extends BaseAdapter {
         holder.image.setTag(image.url);
         holder.username.setText(Html.fromHtml("<b>" + image.username + "</b>") +
             " taken " + image.taken_at);
-        holder.caption.setText(Html.fromHtml(image.caption));
+        holder.caption.setText(Html.fromHtml("<b>" + image.username + "</b> " + image.caption));
 
         // comments hold likes and comments
         StringBuilder likerString = new StringBuilder();
@@ -113,7 +113,17 @@ public class LazyAdapter extends BaseAdapter {
                 likerString.append("</b><br />");
             }
         }
-        likerString.append(image.comments);
+
+        // iterate over comments
+        if( image.comment_list != null ) {
+            if( image.comment_list.size() > 0 ) {
+                for( Comment comment : image.comment_list ) {
+                    likerString.append("<b>" + comment.username + "</b> ");
+                    likerString.append(comment.comment + "<br />");
+                }
+            }
+        }
+
         holder.comments.setText(Html.fromHtml(likerString.toString()));
 
         imageLoader.DisplayImage(image.url, activity, holder.image);

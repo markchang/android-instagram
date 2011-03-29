@@ -28,22 +28,19 @@
 
 package org.acmelab.andgram;
 
-import java.util.ArrayList;
-
 /**
  * Created by IntelliJ IDEA.
  * User: mchang
- * Date: 3/25/11
- * Time: 11:09 PM
+ * Date: 3/29/11
+ * Time: 1:30 AM
  * To change this template use File | Settings | File Templates.
  */
-public class InstagramImage {
-    public String url = "";
-    public String username = "";
-    public String caption = "";
-    public String taken_at = "";
-    public String pk = "";
+public class Comment {
+    public final String username;
+    public final String comment;
 
-    public ArrayList<String> liker_list;
-    public ArrayList<Comment> comment_list;
+    public Comment(String _username, String _comment) {
+        this.username = _username;
+        this.comment = _comment;
+    }
 }
