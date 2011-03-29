@@ -57,6 +57,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+            <Button android:id="@+id/gallery_button"
+                    android:onClick="openGalleryIntent"
+                    style="@style/DashboardButton"
+                    android:text="@string/gallery"
+                    android:drawableTop="@drawable/ic_menu_gallery"/>
             <Button android:id="@+id/login_button"
                     android:onClick="openLoginIntent"
                     style="@style/DashboardButton"
