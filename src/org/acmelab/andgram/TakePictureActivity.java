@@ -31,6 +31,7 @@ package org.acmelab.andgram;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -75,6 +76,8 @@ public class TakePictureActivity extends Activity
     EditText txtCaption  = null;
     ImageView imageView = null;
     Button uploadButton = null;
+    Button cameraButton = null;
+    Button galleryButton = null;
 
     private DefaultHttpClient httpClient = null;
     private Uri srcImageUri = null;
@@ -95,6 +98,8 @@ public class TakePictureActivity extends Activity
         txtCaption  = (EditText)findViewById(R.id.txtCaption);
         imageView = (ImageView)findViewById(R.id.imageView);
         uploadButton = (Button)findViewById(R.id.btnUpload);
+        cameraButton = (Button)findViewById(R.id.btnCamera);
+        galleryButton =  (Button)findViewById(R.id.btnGallery);
 
         // create the output dir for us
         File outputDirectory = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR);
@@ -104,13 +109,28 @@ public class TakePictureActivity extends Activity
         dashboardIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 
         actionBar = (ActionBar) findViewById(R.id.pictureActionbar);
-        actionBar.setTitle(R.string.take_picture);
+        actionBar.setTitle(R.string.upload);
         final ActionBar.Action goHomeAction = new ActionBar.IntentAction(this,
                 dashboardIntent, R.drawable.ic_title_home);
         actionBar.addAction(goHomeAction);
 
-        // start camera picture taking intent
-        takePicture(null);
+        // figure out what action we are supposed to take
+        Bundle extras = getIntent().getExtras();
+        int action = extras.getInt("action");
+        switch(action) {
+            case Utils.UPLOAD_FROM_CAMERA:
+                galleryButton.setVisibility(View.GONE);
+                cameraButton.setVisibility(View.VISIBLE);
+                takePicture(null);
+                break;
+            case Utils.UPLOAD_FROM_GALLERY:
+                cameraButton.setVisibility(View.GONE);
+                galleryButton.setVisibility(View.VISIBLE);
+                uploadFromGallery(null);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -129,6 +149,14 @@ public class TakePictureActivity extends Activity
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void uploadFromGallery(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,
+                "Select Picture"), Utils.SELECT_FROM_GALLERY);
     }
 
     public void takePicture(View view) {
@@ -266,7 +294,7 @@ public class TakePictureActivity extends Activity
         }
     }
 
-    private void processImage() {
+    private void processImage(String filePath) {
         Bitmap resizedBitmap;
         Bitmap croppedBitmap;
         Bitmap roundedBitmap;
@@ -274,8 +302,14 @@ public class TakePictureActivity extends Activity
 
         StringBuilder srcImageFilename = new StringBuilder();
         StringBuilder processedImageFilename = new StringBuilder();
-        srcImageFilename.append(Environment.getExternalStorageDirectory() +
-                "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
+
+        // such a fucking hack. sorry.
+        if( filePath != null ) {
+            srcImageFilename.append(filePath);
+        } else {
+            srcImageFilename.append(Environment.getExternalStorageDirectory() +
+                    "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
+        }
         processedImageFilename.append(Environment.getExternalStorageDirectory() +
                 "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_PROCESSED);
 
@@ -332,38 +366,6 @@ public class TakePictureActivity extends Activity
             Log.i(Utils.TAG, "Small image, leaving alone");
             processedImageUri = srcImageUri;
         }
-
-
-        /* old code
-        int startX = srcWidth/2 - desiredWidth/2;
-        int startY = srcHeight/2 - desiredWidth/2;
-
-        if( desiredWidth <= srcWidth && desiredWidth <= srcHeight ) {
-            Log.i(Utils.TAG,"Resizing and cropping image");
-            resizedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
-            roundedBitmap = getRoundedCornerBitmap(resizedBitmap);
-
-            // Save
-            try {
-                File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_PROCESSED);
-                processedImageUri = Uri.fromFile(outputFile);
-
-                FileOutputStream out = new FileOutputStream(processedImageFilename.toString());
-                roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
-                        Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
-                roundedBitmap.recycle();
-                resizedBitmap.recycle();
-                srcBitmap.recycle();
-                Log.i(TAG,"Processed image, now returning");
-            } catch( Exception e ) {
-
-            }
-        } else {
-            Log.i(Utils.TAG, "Small image, leaving alone");
-            processedImageUri = srcImageUri;
-        }
-        */
-
     }
 
     private Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
@@ -428,7 +430,22 @@ public class TakePictureActivity extends Activity
                 case Utils.CAMERA_PIC_REQUEST:
                     Log.i(TAG, "Camera returned");
                     getContentResolver().notifyChange(srcImageUri, null);
-                    processImage();
+                    processImage(null);
+                    showProcessedImage();
+                    break;
+                case Utils.SELECT_FROM_GALLERY:
+                    Log.i(Utils.TAG, "Gallery returned");
+                    srcImageUri = data.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                    Cursor cursor = getContentResolver().query(srcImageUri, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    processImage(filePath);
                     showProcessedImage();
                     break;
                 default:

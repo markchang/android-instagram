@@ -9,6 +9,7 @@
     <string name="main_menu_clear">Clear</string>
 
     <string name="take_picture">Take Picture</string>
+    <string name="choose_gallery">Choose...</string>
     <string name="upload">Upload</string>
     <string name="comment">Comment</string>
     <string name="default_comment">Taken by Andgram</string>

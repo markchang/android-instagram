@@ -47,7 +47,15 @@ public class DashboardActivity extends Activity {
     }
 
     public void openPictureIntent(View view) {
-        startActivity(new Intent(DashboardActivity.this, TakePictureActivity.class));
+        Intent pictureIntent = new Intent(DashboardActivity.this, TakePictureActivity.class);
+        pictureIntent.putExtra("action", Utils.UPLOAD_FROM_CAMERA);
+        startActivity(pictureIntent);
+    }
+
+    public void openGalleryIntent(View view) {
+        Intent galleryIntent = new Intent(DashboardActivity.this, TakePictureActivity.class);
+        galleryIntent.putExtra("action", Utils.UPLOAD_FROM_GALLERY);
+        startActivity(galleryIntent);
     }
 
     public void openFeedIntent(View view) {

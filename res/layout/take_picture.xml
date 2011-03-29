@@ -24,12 +24,21 @@
         android:layout_height="wrap_content"
         >
         <Button
-            android:id="@+id/btnPicture"
+            android:id="@+id/btnCamera"
             android:layout_width="0dip"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/take_picture"
             android:onClick="takePicture"
+            />
+        <Button
+            android:id="@+id/btnGallery"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_gallery"
+            android:onClick="uploadFromGallery"
+            android:visibility="gone"
             />
         <Button
             android:id="@+id/btnUpload"

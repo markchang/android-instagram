@@ -63,6 +63,9 @@ public class Utils {
 
     // intent identifiers
     public static final int CAMERA_PIC_REQUEST = 1;
+    public static final int UPLOAD_FROM_GALLERY = 2;
+    public static final int UPLOAD_FROM_CAMERA = 3;
+    public static final int SELECT_FROM_GALLERY = 4;
 
     // image constants
     public static final String OUTPUT_DIR = "andgram";
