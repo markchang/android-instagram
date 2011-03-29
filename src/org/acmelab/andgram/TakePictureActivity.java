@@ -294,6 +294,7 @@ public class TakePictureActivity extends Activity
         }
     }
 
+    // fixme: this is terrible, but gets it done
     private void processImage(String filePath) {
         Bitmap resizedBitmap;
         Bitmap croppedBitmap;
@@ -319,31 +320,30 @@ public class TakePictureActivity extends Activity
         int srcWidth = srcBitmap.getWidth();
         int srcHeight = srcBitmap.getHeight();
         int desiredWidth = Utils.IMAGE_WIDTH;
+        int desiredHeight = Utils.IMAGE_HEIGHT;
 
         // scale image short length to desiredWidth
         // crop long dimension
         if( srcWidth > desiredWidth && srcHeight > desiredWidth ) {
             if( srcWidth < srcHeight ) {
-                int newWidth = desiredWidth;
                 float scaleRatio = (float)srcWidth/(float)desiredWidth;
                 float newHeight = (float)srcHeight / scaleRatio;
-                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, newWidth, (int)newHeight, true);
+                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, desiredWidth, (int)newHeight, true);
                 srcBitmap.recycle();
 
                 int offsetY = resizedBitmap.getHeight()/2 - desiredWidth / 2;
-                croppedBitmap = Bitmap.createBitmap(resizedBitmap, 0, offsetY, desiredWidth, desiredWidth);
+                croppedBitmap = Bitmap.createBitmap(resizedBitmap, 0, offsetY, desiredWidth, desiredHeight);
                 resizedBitmap.recycle();
                 roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
                 croppedBitmap.recycle();
             } else {
-                int newHeight = desiredWidth;
                 float scaleRatio = (float)srcHeight/(float)desiredWidth;
                 float newWidth = (float)srcWidth/scaleRatio;
-                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, (int)newWidth, newHeight, true);
+                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, (int)newWidth, desiredHeight, true);
                 srcBitmap.recycle();
 
                 int offsetX = resizedBitmap.getWidth()/2 - desiredWidth / 2;
-                croppedBitmap = Bitmap.createBitmap(resizedBitmap, offsetX, 0, desiredWidth, desiredWidth);
+                croppedBitmap = Bitmap.createBitmap(resizedBitmap, offsetX, 0, desiredWidth, desiredHeight);
                 resizedBitmap.recycle();
                 roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
                 croppedBitmap.recycle();
@@ -362,10 +362,68 @@ public class TakePictureActivity extends Activity
             } catch( Exception e ) {
 
             }
-        } else {
+        } else if( srcWidth <= desiredWidth && srcHeight <= desiredWidth ) {
             Log.i(Utils.TAG, "Small image, leaving alone");
             processedImageUri = srcImageUri;
+        } else {
+            // one dimension is smaller than desired, one is larger
+            // resize the larger dimension down then round it into 612x612
+            if( srcWidth > desiredWidth ) {
+                float scaleRatio = (float)srcWidth/(float)desiredWidth;
+                float newHeight = (float)srcHeight/scaleRatio;
+                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, desiredWidth, (int)newHeight, true);
+                srcBitmap.recycle();
+                roundedBitmap = getScaledRoundedCornerBitmap(resizedBitmap);
+                resizedBitmap.recycle();
+            } else {
+                float scaleRatio = (float)srcHeight/(float)desiredWidth;
+                float newWidth = (float)srcWidth/scaleRatio;
+                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, (int)newWidth, desiredHeight, true);
+                srcBitmap.recycle();
+                roundedBitmap = getScaledRoundedCornerBitmap(resizedBitmap);
+                resizedBitmap.recycle();
+            }
+
+            // Save
+            try {
+                File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_PROCESSED);
+                processedImageUri = Uri.fromFile(outputFile);
+
+                FileOutputStream out = new FileOutputStream(processedImageFilename.toString());
+                roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
+                        Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
+                roundedBitmap.recycle();
+                Log.i(TAG,"Processed image, now returning");
+            } catch( Exception e ) {
+
+            }
         }
+    }
+
+    private Bitmap getScaledRoundedCornerBitmap(Bitmap bitmap) {
+        // paint bitmap into black bitmap
+        Bitmap roundedBitmap = Bitmap.createBitmap(Utils.IMAGE_WIDTH, Utils.IMAGE_HEIGHT, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(roundedBitmap);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect destRect = new Rect((Utils.IMAGE_WIDTH-bitmap.getWidth())/2,
+                Utils.IMAGE_BORDER,
+                (Utils.IMAGE_WIDTH)-(Utils.IMAGE_WIDTH-bitmap.getWidth())/2,
+                Utils.IMAGE_HEIGHT-Utils.IMAGE_BORDER);
+        final RectF rectF = new RectF(destRect);
+        final Rect srcRect = new Rect(0,0,bitmap.getWidth(), Utils.IMAGE_HEIGHT);
+        final float roundPx = Utils.IMAGE_CORNER_RADIUS;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, srcRect, destRect, paint);
+
+        return roundedBitmap;
     }
 
     private Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
