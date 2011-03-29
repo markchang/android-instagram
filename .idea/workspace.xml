@@ -583,7 +583,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="like/unlike working!" />
+    <option name="LAST_COMMIT_MESSAGE" value="commenting finished" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -607,6 +607,7 @@
     <MESSAGE value="really fixed low-res image FC." />
     <MESSAGE value="got rid of debuggable flag in manifest" />
     <MESSAGE value="like/unlike working!" />
+    <MESSAGE value="commenting finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
