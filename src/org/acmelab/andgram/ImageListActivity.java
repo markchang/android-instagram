@@ -121,18 +121,27 @@ public class ImageListActivity extends Activity {
             final String username = Utils.getUsername(getApplicationContext());
 
             // build dialog
-            String likeString;
+            List<String> dialogItems = new ArrayList<String>();
+
+            // like/unlike
             if( instagramImage.liker_list != null ) {
                 if( instagramImage.liker_list.contains(username) ) {
-                    likeString = "Unlike";
+                    dialogItems.add("Unlike");
                 } else {
-                    likeString = "Like";
+                    dialogItems.add("Like");
                 }
             } else {
-                likeString = "Like";
+                dialogItems.add("Like");
             }
 
-            final CharSequence[] items = {likeString, "Comment"};
+            dialogItems.add("Comment");
+
+            // delete
+            if( instagramImage.username.equals(username) ) {
+                dialogItems.add("Delete");
+            }
+
+            final CharSequence[] items = dialogItems.toArray(new String[dialogItems.size()]);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(ImageListActivity.this);
             builder.setTitle("Choose your action");
@@ -144,6 +153,8 @@ public class ImageListActivity extends Activity {
                             break;
                         case 1:
                             showCommentDialog(instagramImage, username);
+                        case 2:
+                            showDeleteDialog(instagramImage);
                         default:
                             break;
                     }
@@ -154,6 +165,35 @@ public class ImageListActivity extends Activity {
 
         }
     };
+
+
+    public void showDeleteDialog(InstagramImage image) {
+        final InstagramImage finalImage = image;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this image?")
+               .setCancelable(false)
+               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       String url = Utils.createDeleteUrl(finalImage.pk);
+                       String jsonResponse = Utils.doRestfulGet(httpClient, url, getApplicationContext());
+                       if( jsonResponse != null ) {
+                           instagramImageList.remove(finalImage);
+                           adapter.notifyDataSetChanged();
+                       } else {
+                           Toast.makeText(getApplicationContext(),
+                                   "Delete failed", Toast.LENGTH_SHORT).show();
+                       }
+                   }
+               })
+               .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                   }
+               });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     public void showCommentDialog(InstagramImage image, String username) {
         final InstagramImage finalImage = image;

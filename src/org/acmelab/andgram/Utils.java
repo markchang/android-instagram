@@ -79,6 +79,8 @@ public class Utils {
     public static final String UNLIKE_POSTFIX = "/unlike/";
     public static final String COMMENT_PREFIX = "http://instagr.am/api/v1/media/";
     public static final String COMMENT_POSTFIX = "/comment/";
+    public static final String DELETE_PREFIX = "http://instagr.am/api/v1/media/";
+    public static final String DELETE_POSTFIX = "/delete/";
 
 
     public static boolean isOnline(Context ctx) {
@@ -86,6 +88,11 @@ public class Utils {
         if( cm.getActiveNetworkInfo() == null ) return false;
         return cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
+
+    public static String createDeleteUrl(String id) {
+        return DELETE_PREFIX + id + DELETE_POSTFIX;
+    }
+
 
     public static String createLikeUrl(String id) {
         return LIKE_UNLIKE_PREFIX + id + LIKE_POSTFIX;
