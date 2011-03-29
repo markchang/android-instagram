@@ -123,7 +123,7 @@ public class ImageListActivity extends Activity {
             // build dialog
             List<String> dialogItems = new ArrayList<String>();
 
-            // like/unlike
+            // 0: like/unlike
             if( instagramImage.liker_list != null ) {
                 if( instagramImage.liker_list.contains(username) ) {
                     dialogItems.add("Unlike");
@@ -134,9 +134,15 @@ public class ImageListActivity extends Activity {
                 dialogItems.add("Like");
             }
 
+            // 1: comment
             dialogItems.add("Comment");
 
-            // delete
+            // 2: share
+            if( instagramImage.username.equals(username) ) {
+                dialogItems.add("Share");
+            }
+
+            // 3: delete
             if( instagramImage.username.equals(username) ) {
                 dialogItems.add("Delete");
             }
@@ -155,6 +161,9 @@ public class ImageListActivity extends Activity {
                             showCommentDialog(instagramImage, username);
                             break;
                         case 2:
+                            showShareDialog(instagramImage);
+                            break;
+                        case 3:
                             showDeleteDialog(instagramImage);
                             break;
                         default:
@@ -167,6 +176,40 @@ public class ImageListActivity extends Activity {
 
         }
     };
+
+    public void showShareDialog(InstagramImage image) {
+        final InstagramImage finalImage = image;
+
+        // get the permalink
+        String url = Utils.createPermalinkUrl(finalImage.pk);
+        String jsonResponse = Utils.doRestfulGet(httpClient, url, getApplicationContext());
+        if( jsonResponse != null ) {
+            try {
+                JSONTokener jsonTokener = new JSONTokener(jsonResponse);
+                JSONObject jsonObject = new JSONObject(jsonTokener);
+                String permalink = jsonObject.getString("permalink");
+                if( permalink != null ) {
+                    // shoot the intent
+                    // will default to "messaging / sms" if nothing else is installed
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    //Text seems to be necessary for Facebook and Twitter
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, permalink);
+                    startActivity(Intent.createChooser(sharingIntent,"Share using"));
+                }
+            } catch (JSONException j) {
+                Log.e(TAG, "JSON parse error: " + j.toString());
+                Toast.makeText(getApplicationContext(),
+                        "There was an error communicating with Instagram",
+                        Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Failed to get permalink for the image", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 
 
     public void showDeleteDialog(InstagramImage image) {

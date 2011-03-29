@@ -1,12 +1,14 @@
 Android Instagram (Andgram)
 ===========================
 
-This is an extremely simple Android Instagram client. It doesn't do much, but
-it will let you take pictures and upload them to Instagram. It will also let
-you view your activity feed.
+This is an Instagram client for Android. It is a total and utter hack.
+Please do look too closely at the code else you will feel sick and your
+eyes will likely bleed.
 
-No, it won't let you create an Instagram account. No, it really doesn't do
-anything else. If you want it to, just leave a comment or shoot me an email.
+No, it won't let you create an Instagram account. No, Instagram won't let
+you have images that are non-square larger than 612x612.
+
+If you want changes, fork the repository and send a pull request.
 
 Resources:
 

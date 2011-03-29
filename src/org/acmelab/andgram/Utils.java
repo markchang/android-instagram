@@ -74,13 +74,12 @@ public class Utils {
     public static final String UPLOAD_URL = "http://instagr.am/api/v1/media/upload/";
     public static final String CONFIGURE_URL = "https://instagr.am/api/v1/media/configure/";
     public static final String TIMELINE_URL = "http://instagr.am/api/v1/feed/timeline/";
-    public static final String LIKE_UNLIKE_PREFIX = "http://instagr.am/api/v1/media/";
+    public static final String MEDIA_PREFIX = "http://instagr.am/api/v1/media/";
     public static final String LIKE_POSTFIX = "/like/";
     public static final String UNLIKE_POSTFIX = "/unlike/";
-    public static final String COMMENT_PREFIX = "http://instagr.am/api/v1/media/";
     public static final String COMMENT_POSTFIX = "/comment/";
-    public static final String DELETE_PREFIX = "http://instagr.am/api/v1/media/";
     public static final String DELETE_POSTFIX = "/delete/";
+    public static final String PERMALINK_POSTFIX = "/permalink/";
 
 
     public static boolean isOnline(Context ctx) {
@@ -90,20 +89,24 @@ public class Utils {
     }
 
     public static String createDeleteUrl(String id) {
-        return DELETE_PREFIX + id + DELETE_POSTFIX;
+        return MEDIA_PREFIX + id + DELETE_POSTFIX;
     }
 
 
     public static String createLikeUrl(String id) {
-        return LIKE_UNLIKE_PREFIX + id + LIKE_POSTFIX;
+        return MEDIA_PREFIX + id + LIKE_POSTFIX;
     }
 
     public static String createUnlikeUrl(String id) {
-        return LIKE_UNLIKE_PREFIX + id + UNLIKE_POSTFIX;
+        return MEDIA_PREFIX + id + UNLIKE_POSTFIX;
     }
 
     public static String createCommentUrl(String id) {
-        return COMMENT_PREFIX + id + COMMENT_POSTFIX;
+        return MEDIA_PREFIX + id + COMMENT_POSTFIX;
+    }
+
+    public static String createPermalinkUrl(String id) {
+        return MEDIA_PREFIX + id + PERMALINK_POSTFIX;
     }
 
     public static void CopyStream(InputStream is, OutputStream os)
