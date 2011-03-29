@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ef7de86-783e-40c5-89b1-58b3fa95d7ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/SerializedCookie.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/ImageLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" afterPath="$PROJECT_DIR$/src/org/acmelab/andgram/Utils.java" />
     </list>
     <ignored path="android-instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,35 +66,7 @@
     <favorites_list name="android-instagram" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ImageListActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="171" column="45" selection-start="6671" selection-end="6671" vertical-scroll-proportion="0.34743875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LazyAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstagramImage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="32" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -548,7 +513,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="58" y="22" width="1177" height="850" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -561,7 +526,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39891696" sideWeight="0.6701847" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25332153" sideWeight="0.6726027" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32739726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32739726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32465753" sideWeight="0.9972924" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -585,7 +550,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="got rid of debuggable flag in manifest" />
+    <option name="LAST_COMMIT_MESSAGE" value="like/unlike working!" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -608,6 +573,7 @@
     <MESSAGE value="made actionbar blue" />
     <MESSAGE value="really fixed low-res image FC." />
     <MESSAGE value="got rid of debuggable flag in manifest" />
+    <MESSAGE value="like/unlike working!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -720,23 +686,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="32" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.0">
+        <state line="179" column="39" selection-start="6975" selection-end="6975" vertical-scroll-proportion="0.5612472">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/LazyAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.0">
+        <state line="113" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="1.1314031">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/ImageListActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/org/acmelab/andgram/InstagramImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="45" selection-start="6671" selection-end="6671" vertical-scroll-proportion="0.34743875">
+        <state line="45" column="32" selection-start="2023" selection-end="2023" vertical-scroll-proportion="0.4935065">
           <folding />
         </state>
       </provider>
