@@ -39,9 +39,13 @@ public class DashboardActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard_home);
 
+        Intent pictureIntent = new Intent(DashboardActivity.this, TakePictureActivity.class);
+        pictureIntent.putExtra("action", Utils.UPLOAD_FROM_CAMERA);
+
+
         final ActionBar actionBar = (ActionBar) findViewById(R.id.dashboardActionbar);
         final ActionBar.Action takePictureAction = new ActionBar.IntentAction(this,
-                new Intent(this, TakePictureActivity.class), R.drawable.ic_title_camera);
+                pictureIntent, R.drawable.ic_title_camera);
         actionBar.addAction(takePictureAction);
 
     }
