@@ -64,6 +64,14 @@ public class DashboardActivity extends Activity {
         startActivity(feedIntent);
     }
 
+    public void openUserfeedIntent(View view) {
+        Intent feedIntent = new Intent(DashboardActivity.this, ImageListActivity.class);
+        String pk = Utils.getUserPk(getApplicationContext());
+        feedIntent.putExtra("url", Utils.createUserTimelineUrl(pk));
+        feedIntent.putExtra("title", R.string.userfeed);
+        startActivity(feedIntent);
+    }
+
     public void openLoginIntent(View view) {
         Utils.launchCredentials(getApplicationContext());
     }

@@ -40,33 +40,29 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+            <Button android:id="@+id/user_feed_button"
+                    android:onClick="openUserfeedIntent"
+                    style="@style/DashboardButton"
+                    android:text="@string/userfeed"
+                    android:drawableTop="@drawable/ic_menu_slideshow"/>
             <Button android:id="@+id/camera_button"
                     android:onClick="openPictureIntent"
                     style="@style/DashboardButton"
                     android:text="@string/take_picture"
                     android:drawableTop="@drawable/ic_menu_camera"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
             <Button android:id="@+id/login_button"
                     android:onClick="openLoginIntent"
                     style="@style/DashboardButton"
                     android:text="@string/login"
                     android:drawableTop="@drawable/ic_menu_login"/>
         </LinearLayout>
-
-        <!--<LinearLayout-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1">-->
-            <!--<Button android:id="@+id/action_five_button"-->
-                    <!--style="@style/DashboardButton"-->
-                    <!--android:text="@string/upload"-->
-                    <!--android:drawableTop="@drawable/ic_menu_camera"/>-->
-            <!--<Button android:id="@+id/action_six_button"-->
-                    <!--style="@style/DashboardButton"-->
-                    <!--android:text="@string/upload"-->
-                    <!--android:drawableTop="@drawable/ic_menu_camera"/>-->
-
-        <!--</LinearLayout>-->
     </LinearLayout>
 
 </LinearLayout>

@@ -14,6 +14,7 @@
     <string name="default_comment">Taken by Andgram</string>
     <string name="feed">Feed</string>
     <string name="popular">Popular</string>
+    <string name="userfeed">Your feed</string>
     <string name="empty">empty</string>
 
     <string name="dashboard">Dashboard</string>
