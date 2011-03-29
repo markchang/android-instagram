@@ -153,8 +153,10 @@ public class ImageListActivity extends Activity {
                             break;
                         case 1:
                             showCommentDialog(instagramImage, username);
+                            break;
                         case 2:
                             showDeleteDialog(instagramImage);
+                            break;
                         default:
                             break;
                     }
