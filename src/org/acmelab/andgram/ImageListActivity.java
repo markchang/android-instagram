@@ -67,6 +67,7 @@ import java.util.List;
 public class ImageListActivity extends Activity {
 
     private static final String TAG = "ANDGRAM";
+    private String sourceUrl;
 
     ActionBar actionBar;
     ListView list;
@@ -79,11 +80,16 @@ public class ImageListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_list);
 
+        Bundle extras = getIntent().getExtras();
+        sourceUrl = extras.getString("url");
+        int titleId = extras.getInt("title");
+        String title = getResources().getString(titleId);
+
         Intent dashboardIntent = new Intent(getApplicationContext(), DashboardActivity.class);
         dashboardIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 
         actionBar = (ActionBar) findViewById(R.id.imageListActionbar);
-        actionBar.setTitle(R.string.activity);
+        actionBar.setTitle(title);
         actionBar.addAction(new RefreshAction());
         final ActionBar.Action goHomeAction = new ActionBar.IntentAction(this,
                 dashboardIntent, R.drawable.ic_title_home);
@@ -364,7 +370,7 @@ public class ImageListActivity extends Activity {
                 return false;
             } else {
                 try {
-                    HttpGet httpGet = new HttpGet(Utils.TIMELINE_URL);
+                    HttpGet httpGet = new HttpGet(sourceUrl);
                     HttpResponse httpResponse = httpClient.execute(httpGet);
 
                     // test result code

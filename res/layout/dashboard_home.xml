@@ -24,15 +24,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
             <Button android:id="@+id/activity_button"
-                    android:onClick="openActivityIntent"
+                    android:onClick="openFeedIntent"
                     style="@style/DashboardButton"
-                    android:text="@string/activity"
-                    android:drawableTop="@drawable/ic_menu_slideshow"/>
-            <Button android:id="@+id/camera_button"
-                    android:onClick="openPictureIntent"
+                    android:text="@string/feed"
+                    android:drawableTop="@drawable/ic_menu_allfriends"/>
+            <Button android:id="@+id/popular_button"
+                    android:onClick="openPopularIntent"
                     style="@style/DashboardButton"
-                    android:text="@string/take_picture"
-                    android:drawableTop="@drawable/ic_menu_camera"/>
+                    android:text="@string/popular"
+                    android:drawableTop="@drawable/ic_menu_star"/>
         </LinearLayout>
 
         <LinearLayout
@@ -40,15 +40,16 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
+            <Button android:id="@+id/camera_button"
+                    android:onClick="openPictureIntent"
+                    style="@style/DashboardButton"
+                    android:text="@string/take_picture"
+                    android:drawableTop="@drawable/ic_menu_camera"/>
             <Button android:id="@+id/login_button"
                     android:onClick="openLoginIntent"
                     style="@style/DashboardButton"
                     android:text="@string/login"
                     android:drawableTop="@drawable/ic_menu_login"/>
-            <!--<Button android:id="@+id/action_four_button"-->
-                    <!--style="@style/DashboardButton"-->
-                    <!--android:text="@string/upload"-->
-                    <!--android:drawableTop="@drawable/ic_menu_camera"/>-->
         </LinearLayout>
 
         <!--<LinearLayout-->

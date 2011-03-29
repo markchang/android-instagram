@@ -57,9 +57,14 @@ import java.util.Date;
 import java.util.List;
 
 public class Utils {
+    // strings
     public static final String TAG = "ANDGRAM";
     public static final String PREFS_NAME = "andgram_prefs";
+
+    // intent identifiers
     public static final int CAMERA_PIC_REQUEST = 1;
+
+    // image constants
     public static final String OUTPUT_DIR = "andgram";
     public static final String OUTPUT_FILE = "andgram.jpg";
     public static final String OUTPUT_FILE_CROPPED = "andgram_cropped.jpg";
@@ -69,11 +74,15 @@ public class Utils {
     public static final int IMAGE_CORNER_RADIUS = 35;
     public static final int IMAGE_JPEG_COMPRESSION_QUALITY = 75;
 
+    // url constants
     public static final String LOGIN_URL = "https://instagr.am/api/v1/accounts/login/";
     public static final String LOGOUT_URL = "http://instagr.am/api/v1/accounts/logout/";
     public static final String UPLOAD_URL = "http://instagr.am/api/v1/media/upload/";
     public static final String CONFIGURE_URL = "https://instagr.am/api/v1/media/configure/";
     public static final String TIMELINE_URL = "http://instagr.am/api/v1/feed/timeline/";
+    public static final String POPULAR_URL = "http://instagr.am/api/v1/feed/popular/";
+
+    public static final String USERTIMELINE_PREFIX = "http://instagr.am/api/v1/feed/user/";
     public static final String MEDIA_PREFIX = "http://instagr.am/api/v1/media/";
     public static final String LIKE_POSTFIX = "/like/";
     public static final String UNLIKE_POSTFIX = "/unlike/";
@@ -86,6 +95,21 @@ public class Utils {
         ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         if( cm.getActiveNetworkInfo() == null ) return false;
         return cm.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+    public static String createUserTimelineUrl(String pk) {
+        return USERTIMELINE_PREFIX + pk + "/";
+    }
+
+    public static String getUserPk(Context ctx) {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(PREFS_NAME, Activity.MODE_PRIVATE);
+        Boolean loginValid = sharedPreferences.getBoolean("loginValid",false);
+
+        if( loginValid ) {
+            return sharedPreferences.getString("pk",null);
+        } else {
+            return null;
+        }
     }
 
     public static String createDeleteUrl(String id) {

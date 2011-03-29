@@ -104,7 +104,7 @@ public class TakePictureActivity extends Activity
         dashboardIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
 
         actionBar = (ActionBar) findViewById(R.id.pictureActionbar);
-        actionBar.setTitle(R.string.activity);
+        actionBar.setTitle(R.string.take_picture);
         final ActionBar.Action goHomeAction = new ActionBar.IntentAction(this,
                 dashboardIntent, R.drawable.ic_title_home);
         actionBar.addAction(goHomeAction);

@@ -12,7 +12,8 @@
     <string name="upload">Upload</string>
     <string name="comment">Comment</string>
     <string name="default_comment">Taken by Andgram</string>
-    <string name="activity">Activity</string>
+    <string name="feed">Feed</string>
+    <string name="popular">Popular</string>
     <string name="empty">empty</string>
 
     <string name="dashboard">Dashboard</string>

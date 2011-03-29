@@ -50,8 +50,18 @@ public class DashboardActivity extends Activity {
         startActivity(new Intent(DashboardActivity.this, TakePictureActivity.class));
     }
 
-    public void openActivityIntent(View view) {
-        startActivity(new Intent(DashboardActivity.this, ImageListActivity.class));
+    public void openFeedIntent(View view) {
+        Intent feedIntent = new Intent(DashboardActivity.this, ImageListActivity.class);
+        feedIntent.putExtra("url", Utils.TIMELINE_URL);
+        feedIntent.putExtra("title", R.string.feed);
+        startActivity(feedIntent);
+    }
+
+    public void openPopularIntent(View view) {
+        Intent feedIntent = new Intent(DashboardActivity.this, ImageListActivity.class);
+        feedIntent.putExtra("url", Utils.POPULAR_URL);
+        feedIntent.putExtra("title", R.string.popular);
+        startActivity(feedIntent);
     }
 
     public void openLoginIntent(View view) {
