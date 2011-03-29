@@ -95,15 +95,28 @@ public class LazyAdapter extends BaseAdapter {
         else
             holder = (ViewHolder)vi.getTag();
 
-        holder.image.setTag(instagramImageArrayList.get(position).url);
-        holder.username.setText(Html.fromHtml("<b>" + instagramImageArrayList.get(position).username + "</b>") +
-            " taken " + instagramImageArrayList.get(position).taken_at);
-        holder.caption.setText(Html.fromHtml(instagramImageArrayList.get(position).caption));
-        holder.comments.setText(Html.fromHtml(
-                instagramImageArrayList.get(position).likers + "<br />" +
-                instagramImageArrayList.get(position).comments));
+        InstagramImage image = instagramImageArrayList.get(position);
 
-        imageLoader.DisplayImage(instagramImageArrayList.get(position).url, activity, holder.image);
+        holder.image.setTag(image.url);
+        holder.username.setText(Html.fromHtml("<b>" + image.username + "</b>") +
+            " taken " + image.taken_at);
+        holder.caption.setText(Html.fromHtml(image.caption));
+
+        // comments hold likes and comments
+        StringBuilder likerString = new StringBuilder();
+        if( image.liker_list != null ) {
+            if( image.liker_list.size() > 0 ) {
+                likerString.append("Liked by <b>");
+                for( String liker : image.liker_list ) {
+                    likerString.append(" " + liker);
+                }
+                likerString.append("</b><br />");
+            }
+        }
+        likerString.append(image.comments);
+        holder.comments.setText(Html.fromHtml(likerString.toString()));
+
+        imageLoader.DisplayImage(image.url, activity, holder.image);
 
         return vi;
     }

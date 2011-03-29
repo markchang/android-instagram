@@ -63,7 +63,7 @@ public class ImageLoader {
     private File cacheDir;
 
     public ImageLoader(Context context){
-        //Make the background thead low priority. This way it will not affect the UI performance
+        // Make the background thread low priority. This way it will not affect the UI performance
         photoLoaderThread.setPriority(Thread.NORM_PRIORITY-1);
 
         //Find the dir to save cached images

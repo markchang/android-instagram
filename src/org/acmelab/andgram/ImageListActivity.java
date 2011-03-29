@@ -87,7 +87,7 @@ public class ImageListActivity extends Activity {
                 dashboardIntent, R.drawable.ic_title_home_default);
         actionBar.addAction(goHomeAction);
         list=(ListView)findViewById(R.id.list);
-        //list.setOnItemClickListener(myClickListener);
+        list.setOnItemClickListener(myClickListener);
 
         httpClient = new DefaultHttpClient();
         httpClient.getParams().setParameter("http.useragent", "Instagram");
@@ -103,21 +103,45 @@ public class ImageListActivity extends Activity {
         new FetchActivity().execute();
     }
 
+    private void refresh() {
+        instagramImageList.clear();
+        adapter.notifyDataSetChanged();
+        new FetchActivity().execute();
+    }
+
 
     public AdapterView.OnItemClickListener myClickListener = new AdapterView.OnItemClickListener() {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Log.i(Utils.TAG, "Clicked: " + String.valueOf(i));
-            InstagramImage instagramImage = (InstagramImage)adapter.getItem(i);
-            String username = Utils.getUsername(getApplicationContext());
+
+            final InstagramImage instagramImage = (InstagramImage)adapter.getItem(i);
+            final String username = Utils.getUsername(getApplicationContext());
 
             // build dialog
-            final CharSequence[] items = {"Like", "Unlike"};
+            String likeString;
+            if( instagramImage.liker_list != null ) {
+                if( instagramImage.liker_list.contains(username) ) {
+                    likeString = "Unlike";
+                } else {
+                    likeString = "Like";
+                }
+            } else {
+                likeString = "Like";
+            }
+
+            final CharSequence[] items = {likeString};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(ImageListActivity.this);
-            builder.setTitle("Pick a color");
+            builder.setTitle("Choose your action");
             builder.setItems(items, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int item) {
-                    Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+                    switch(item) {
+                        case 0:
+                            likeUnlike(instagramImage, username);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             });
             AlertDialog alert = builder.create();
@@ -125,6 +149,41 @@ public class ImageListActivity extends Activity {
 
         }
     };
+
+    public void likeUnlike(InstagramImage image, String username) {
+        String url;
+
+        if( image.liker_list != null ) {
+            if( image.liker_list.contains(Utils.getUsername(getApplicationContext()))) {
+                unlike(image,username);
+            } else {
+                like(image, username);
+            }
+        } else {
+            like(image, username);
+        }
+
+    }
+
+    public void like(InstagramImage image, String username) {
+        String url = Utils.createLikeUrl(image.pk);
+        String jsonResponse = Utils.doRestfulGet(httpClient, url, ImageListActivity.this);
+        if( jsonResponse != null ) {
+            if( image.liker_list == null ) image.liker_list = new ArrayList<String>();
+            image.liker_list.add(username);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    public void unlike(InstagramImage image, String username) {
+        String url = Utils.createUnlikeUrl(image.pk);
+        String jsonResponse = Utils.doRestfulGet(httpClient, url, ImageListActivity.this);
+        if( jsonResponse != null ) {
+            if( image.liker_list == null ) image.liker_list = new ArrayList<String>();
+            image.liker_list.remove(username);
+            adapter.notifyDataSetChanged();
+        }
+    }
 
     @Override
     public void onDestroy()
@@ -209,6 +268,7 @@ public class ImageListActivity extends Activity {
                                 JSONArray imageVersions = entry.getJSONArray("image_versions");
                                 JSONObject bigImage = (JSONObject)imageVersions.get(0);
                                 instagramImage.url = bigImage.getString("url");
+                                instagramImage.pk = ((Long)entry.getLong("pk")).toString();
 
                                 // user
                                 JSONObject user = entry.getJSONObject("user");
@@ -249,15 +309,18 @@ public class ImageListActivity extends Activity {
                                 try {
                                     JSONArray likers = entry.getJSONArray("likers");
                                     if( likers != null ) {
+                                        ArrayList<String> likerList = new ArrayList<String>();
                                         StringBuilder likerString = new StringBuilder();
                                         if( likers.length() > 0 ) {
                                             likerString.append("Liked by: <b>");
                                             for( int l=0; l < likers.length(); l++ ) {
                                                 JSONObject like = likers.getJSONObject(l);
                                                 likerString.append(like.getString("username") + " ");
+                                                likerList.add(like.getString("username"));
                                             }
                                             likerString.append("</b>");
                                             instagramImage.likers = likerString.toString();
+                                            instagramImage.liker_list = likerList;
                                         }
                                     }
                                 } catch( JSONException j ) {}

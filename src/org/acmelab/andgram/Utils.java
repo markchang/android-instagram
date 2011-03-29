@@ -40,16 +40,20 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Utils {
@@ -59,7 +63,6 @@ public class Utils {
     public static final String OUTPUT_DIR = "andgram";
     public static final String OUTPUT_FILE = "andgram.jpg";
     public static final String OUTPUT_FILE_CROPPED = "andgram_cropped.jpg";
-    public static final int ID_MAIN = 1;
     public static final int IMAGE_WIDTH = 612;
     public static final int IMAGE_HEIGHT = 612;
     public static final int IMAGE_BORDER = 24;
@@ -71,12 +74,23 @@ public class Utils {
     public static final String UPLOAD_URL = "http://instagr.am/api/v1/media/upload/";
     public static final String CONFIGURE_URL = "https://instagr.am/api/v1/media/configure/";
     public static final String TIMELINE_URL = "http://instagr.am/api/v1/feed/timeline/";
+    public static final String LIKE_UNLIKE_PREFIX = "http://instagr.am/api/v1/media/";
+    public static final String LIKE_POSTFIX = "/like/";
+    public static final String UNLIKE_POSTFIX = "/unlike/";
 
 
     public static boolean isOnline(Context ctx) {
         ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         if( cm.getActiveNetworkInfo() == null ) return false;
         return cm.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
+
+    public static String createLikeUrl(String id) {
+        return LIKE_UNLIKE_PREFIX + id + LIKE_POSTFIX;
+    }
+
+    public static String createUnlikeUrl(String id) {
+        return LIKE_UNLIKE_PREFIX + id + UNLIKE_POSTFIX;
     }
 
     public static void CopyStream(InputStream is, OutputStream os)
@@ -119,7 +133,16 @@ public class Utils {
         }
     }
 
+    public static String getPk(Context ctx) {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(PREFS_NAME, Activity.MODE_PRIVATE);
+        Boolean loginValid = sharedPreferences.getBoolean("loginValid",false);
 
+        if( loginValid ) {
+            return sharedPreferences.getString("pk",null);
+        } else {
+            return null;
+        }
+    }
 
     public static boolean doLogin(Context ctx, DefaultHttpClient httpClient) {
         Log.i(TAG, "Doing login");
@@ -179,6 +202,56 @@ public class Utils {
         }
 
         return true;
+    }
+
+    public static String doRestfulGet(DefaultHttpClient httpClient, String url, Context ctx) {
+        Log.i(Utils.TAG, "Image fetch");
+
+        if( Utils.isOnline(ctx) == false ) {
+            Toast.makeText(ctx,"No connection to Internet.\nTry again later",Toast.LENGTH_SHORT).show();
+            Log.i(Utils.TAG, "No internet!");
+            return null;
+        }
+
+
+        try {
+            HttpGet httpGet = new HttpGet(url);
+            HttpResponse httpResponse = httpClient.execute(httpGet);
+
+            // test result code
+            if( httpResponse.getStatusLine().getStatusCode() != HttpStatus.SC_OK ) {
+                Toast.makeText(ctx, "Action failed.", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Return status code bad.");
+                return null;
+            }
+
+            // test json response
+            HttpEntity httpEntity = httpResponse.getEntity();
+            if( httpEntity != null ) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent(), "UTF-8"));
+                String json = reader.readLine();
+                JSONTokener jsonTokener = new JSONTokener(json);
+                JSONObject jsonObject = new JSONObject(jsonTokener);
+                Log.i(TAG,"JSON: " + jsonObject.toString());
+
+                String loginStatus = jsonObject.getString("status");
+
+                if( !loginStatus.equals("ok") ) {
+                    Toast.makeText(ctx,"Network activity did not return ok",Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "JSON status not ok: " + jsonObject.getString("status"));
+                    return null;
+                } else {
+                    return json;
+                }
+            } else {
+                Toast.makeText(ctx,"Improper data returned from Instagram",Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "instagram returned bad data");
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

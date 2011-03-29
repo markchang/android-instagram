@@ -98,12 +98,20 @@ public class LoginActivity extends Activity {
             return false;
         }
         else {
-            // save username/password in shared preferences
             SharedPreferences sharedPreferences = getSharedPreferences(Utils.PREFS_NAME, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("loginValid", true);
             editor.putString("username", username);
             editor.putString("password", password);
+
+            // find user_id (pk)
+            for( Cookie c : cookieList ) {
+                if( c.getName().equals("ds_user_id") ) {
+                    editor.putString("pk", c.getValue());
+                }
+            }
+
+            // save username/password in shared preferences
             editor.commit();
             return true;
         }
@@ -156,15 +164,6 @@ public class LoginActivity extends Activity {
             }
 
             // test json response
-            // should look like
-            /*
-            {"logged_in_user":
-            {"username": "blah",
-              "pk": 9999999,
-              "profile_pic_url": "http://images.instagram.com/profiles/anonymousUser.jpg",
-              "full_name": "blah"},
-            "status": "ok"}
-            */
             HttpEntity httpEntity = httpResponse.getEntity();
             if( httpEntity != null ) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(httpEntity.getContent(), "UTF-8"));
@@ -182,7 +181,7 @@ public class LoginActivity extends Activity {
                 }
             }
 
-            // stash cookies
+            // save login info so that we can reuse them later
             cookieStore = httpClient.getCookieStore();
 
             if( saveLoginInfo(cookieStore, username, password) == true ) {
