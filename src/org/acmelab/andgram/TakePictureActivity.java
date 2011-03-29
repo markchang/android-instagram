@@ -77,8 +77,8 @@ public class TakePictureActivity extends Activity
     Button uploadButton = null;
 
     private DefaultHttpClient httpClient = null;
-    private Uri imageUri = null;
-    private Uri croppedImageUri = null;
+    private Uri srcImageUri = null;
+    private Uri processedImageUri = null;
     private boolean imageReady = false;
     private ActionBar actionBar;
 
@@ -134,9 +134,9 @@ public class TakePictureActivity extends Activity
     public void takePicture(View view) {
         Log.i(TAG, "Taking picture");
         File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
-        imageUri = Uri.fromFile(outputFile);
+        srcImageUri = Uri.fromFile(outputFile);
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, srcImageUri);
         startActivityForResult(cameraIntent, Utils.CAMERA_PIC_REQUEST);
     }
 
@@ -144,8 +144,8 @@ public class TakePictureActivity extends Activity
         Log.i(TAG, "Clear image");
         if( imageReady ) {
             imageReady = false;
-            imageUri = null;
-            croppedImageUri = null;
+            srcImageUri = null;
+            processedImageUri = null;
 
             findViewById(R.id.captionRow).setVisibility(View.INVISIBLE);
             findViewById(R.id.btnUpload).setEnabled(false);
@@ -171,6 +171,7 @@ public class TakePictureActivity extends Activity
         }
     }
 
+    // fixme: this doesn't need to be a Map return
     public Map<String, String> doUpload() {
         Log.i(TAG, "Upload");
         Long timeInMilliseconds = System.currentTimeMillis()/1000;
@@ -186,7 +187,7 @@ public class TakePictureActivity extends Activity
 
         try {
             // create multipart data
-            File imageFile = new File(croppedImageUri.getPath());
+            File imageFile = new File(processedImageUri.getPath());
             FileBody partFile = new FileBody(imageFile);
             StringBody partTime = new StringBody(timeInSeconds);
             multipartEntity.addPart("photo", partFile );
@@ -265,39 +266,93 @@ public class TakePictureActivity extends Activity
         }
     }
 
-    private void doImageResizeAndRound() {
+    private void processImage() {
+        Bitmap resizedBitmap;
         Bitmap croppedBitmap;
         Bitmap roundedBitmap;
+        Bitmap srcBitmap;
 
-        StringBuilder imageFileName = new StringBuilder();
-        StringBuilder croppedImageFileName = new StringBuilder();
-        imageFileName.append(Environment.getExternalStorageDirectory() + "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
-        croppedImageFileName.append(Environment.getExternalStorageDirectory() + "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_CROPPED);
+        StringBuilder srcImageFilename = new StringBuilder();
+        StringBuilder processedImageFilename = new StringBuilder();
+        srcImageFilename.append(Environment.getExternalStorageDirectory() +
+                "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE);
+        processedImageFilename.append(Environment.getExternalStorageDirectory() +
+                "/" + Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_PROCESSED);
 
         // Get the source image's dimensions
-        Bitmap srcBitmap = BitmapFactory.decodeFile(imageFileName.toString());
+        srcBitmap = BitmapFactory.decodeFile(srcImageFilename.toString());
 
         int srcWidth = srcBitmap.getWidth();
         int srcHeight = srcBitmap.getHeight();
         int desiredWidth = Utils.IMAGE_WIDTH;
 
+        // scale image short length to desiredWidth
+        // crop long dimension
+        if( srcWidth > desiredWidth && srcHeight > desiredWidth ) {
+            if( srcWidth < srcHeight ) {
+                int newWidth = desiredWidth;
+                float scaleRatio = (float)srcWidth/(float)desiredWidth;
+                float newHeight = (float)srcHeight / scaleRatio;
+                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, newWidth, (int)newHeight, true);
+                srcBitmap.recycle();
+
+                int offsetY = resizedBitmap.getHeight()/2 - desiredWidth / 2;
+                croppedBitmap = Bitmap.createBitmap(resizedBitmap, 0, offsetY, desiredWidth, desiredWidth);
+                resizedBitmap.recycle();
+                roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
+                croppedBitmap.recycle();
+            } else {
+                int newHeight = desiredWidth;
+                float scaleRatio = (float)srcHeight/(float)desiredWidth;
+                float newWidth = (float)srcWidth/scaleRatio;
+                resizedBitmap = Bitmap.createScaledBitmap(srcBitmap, (int)newWidth, newHeight, true);
+                srcBitmap.recycle();
+
+                int offsetX = resizedBitmap.getWidth()/2 - desiredWidth / 2;
+                croppedBitmap = Bitmap.createBitmap(resizedBitmap, offsetX, 0, desiredWidth, desiredWidth);
+                resizedBitmap.recycle();
+                roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
+                croppedBitmap.recycle();
+            }
+
+            // Save
+            try {
+                File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_PROCESSED);
+                processedImageUri = Uri.fromFile(outputFile);
+
+                FileOutputStream out = new FileOutputStream(processedImageFilename.toString());
+                roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
+                        Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
+                roundedBitmap.recycle();
+                Log.i(TAG,"Processed image, now returning");
+            } catch( Exception e ) {
+
+            }
+        } else {
+            Log.i(Utils.TAG, "Small image, leaving alone");
+            processedImageUri = srcImageUri;
+        }
+
+
+        /* old code
         int startX = srcWidth/2 - desiredWidth/2;
         int startY = srcHeight/2 - desiredWidth/2;
 
         if( desiredWidth <= srcWidth && desiredWidth <= srcHeight ) {
-            Log.i(Utils.TAG,"Cropping and resizing image");
-            croppedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
-            roundedBitmap = getRoundedCornerBitmap(croppedBitmap);
+            Log.i(Utils.TAG,"Resizing and cropping image");
+            resizedBitmap = Bitmap.createBitmap(srcBitmap, startX, startY, desiredWidth, desiredWidth);
+            roundedBitmap = getRoundedCornerBitmap(resizedBitmap);
 
             // Save
             try {
-                File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_CROPPED);
-                croppedImageUri = Uri.fromFile(outputFile);
+                File outputFile = new File(Environment.getExternalStorageDirectory(), Utils.OUTPUT_DIR + "/" + Utils.OUTPUT_FILE_PROCESSED);
+                processedImageUri = Uri.fromFile(outputFile);
 
-                FileOutputStream out = new FileOutputStream(croppedImageFileName.toString());
+                FileOutputStream out = new FileOutputStream(processedImageFilename.toString());
                 roundedBitmap.compress(Bitmap.CompressFormat.JPEG,
                         Utils.IMAGE_JPEG_COMPRESSION_QUALITY, out);
                 roundedBitmap.recycle();
+                resizedBitmap.recycle();
                 srcBitmap.recycle();
                 Log.i(TAG,"Processed image, now returning");
             } catch( Exception e ) {
@@ -305,8 +360,9 @@ public class TakePictureActivity extends Activity
             }
         } else {
             Log.i(Utils.TAG, "Small image, leaving alone");
-            croppedImageUri = imageUri;
+            processedImageUri = srcImageUri;
         }
+        */
 
     }
 
@@ -334,8 +390,8 @@ public class TakePictureActivity extends Activity
 
     }
 
-    private void showCroppedImage() {
-        getContentResolver().notifyChange(croppedImageUri, null);
+    private void showProcessedImage() {
+        getContentResolver().notifyChange(processedImageUri, null);
         ContentResolver contentResolver = getContentResolver();
         Bitmap imageBitmap;
         LinearLayout captionRow = (LinearLayout)findViewById(R.id.captionRow);
@@ -349,17 +405,17 @@ public class TakePictureActivity extends Activity
                     ((BitmapDrawable)imageView.getDrawable()).getBitmap().recycle();
                 }
             }
-            imageBitmap = android.provider.MediaStore.Images.Media.getBitmap(contentResolver, croppedImageUri);
+            imageBitmap = android.provider.MediaStore.Images.Media.getBitmap(contentResolver, processedImageUri);
             imageView.setImageBitmap(imageBitmap);
-            Log.i(TAG, "Image: " + croppedImageUri.toString());
+            Log.i(TAG, "Image: " + processedImageUri.toString());
             imageReady = true;
 
             // turn on upload button
             uploadButton.setEnabled(true);
 
         } catch ( Exception e ) {
-            Toast.makeText(TakePictureActivity.this, "Camera error", Toast.LENGTH_LONG).show();
-            Log.e(TAG, "Camera error: " + e.toString() );
+            Toast.makeText(TakePictureActivity.this, "Image file read error", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "File read error: " + e.toString() );
             doClear();
         }
     }
@@ -371,9 +427,9 @@ public class TakePictureActivity extends Activity
             switch( requestCode ) {
                 case Utils.CAMERA_PIC_REQUEST:
                     Log.i(TAG, "Camera returned");
-                    getContentResolver().notifyChange(imageUri, null);
-                    doImageResizeAndRound();
-                    showCroppedImage();
+                    getContentResolver().notifyChange(srcImageUri, null);
+                    processImage();
+                    showProcessedImage();
                     break;
                 default:
 

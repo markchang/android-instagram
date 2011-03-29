@@ -67,7 +67,7 @@ public class Utils {
     // image constants
     public static final String OUTPUT_DIR = "andgram";
     public static final String OUTPUT_FILE = "andgram.jpg";
-    public static final String OUTPUT_FILE_CROPPED = "andgram_cropped.jpg";
+    public static final String OUTPUT_FILE_PROCESSED = "andgram_processed.jpg";
     public static final int IMAGE_WIDTH = 612;
     public static final int IMAGE_HEIGHT = 612;
     public static final int IMAGE_BORDER = 24;

@@ -14,7 +14,7 @@
     <application android:label="Andgram"
                  android:icon="@drawable/icon"
                  android:theme="@android:style/Theme.Light.NoTitleBar"
-            android:debuggable="false">
+            android:debuggable="true">
         <activity android:name=".TakePictureActivity">
         </activity>
         <activity android:name=".LoginActivity">
