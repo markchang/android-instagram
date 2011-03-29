@@ -14,7 +14,7 @@
     <application android:label="Andgram"
                  android:icon="@drawable/icon"
                  android:theme="@android:style/Theme.Light.NoTitleBar"
-            android:debuggable="true">
+            android:debuggable="false">
         <activity android:name=".TakePictureActivity"
                 android:configChanges="keyboardHidden|orientation">
         </activity>
