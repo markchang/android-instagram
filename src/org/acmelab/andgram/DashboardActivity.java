@@ -29,6 +29,8 @@
 package org.acmelab.andgram;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +49,21 @@ public class DashboardActivity extends Activity {
         final ActionBar.Action takePictureAction = new ActionBar.IntentAction(this,
                 pictureIntent, R.drawable.ic_title_camera);
         actionBar.addAction(takePictureAction);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Instagram has asked that I remove this application from the Android Market " +
+                            "as I am using unpublished APIs. The app " +
+                            "will be going away shortly, and as of now, it no longer functions.\n\n" +
+                            "Thanks for your support.")
+               .setCancelable(true)
+               .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       dialog.cancel();
+                   }
+               });
+        AlertDialog alert = builder.create();
+        alert.show();
+
 
     }
 
