@@ -60,16 +60,18 @@ containing a value of this type.
         public static final int ic_menu_delete=0x7f020008;
         public static final int ic_menu_gallery=0x7f020009;
         public static final int ic_menu_home=0x7f02000a;
-        public static final int ic_menu_login=0x7f02000b;
-        public static final int ic_menu_preferences=0x7f02000c;
-        public static final int ic_menu_refresh=0x7f02000d;
-        public static final int ic_menu_slideshow=0x7f02000e;
-        public static final int ic_menu_star=0x7f02000f;
-        public static final int ic_title_camera=0x7f020010;
-        public static final int ic_title_home=0x7f020011;
-        public static final int ic_title_refresh=0x7f020012;
-        public static final int icon=0x7f020013;
-        public static final int stub=0x7f020014;
+        public static final int ic_menu_info_details=0x7f02000b;
+        public static final int ic_menu_login=0x7f02000c;
+        public static final int ic_menu_notifications=0x7f02000d;
+        public static final int ic_menu_preferences=0x7f02000e;
+        public static final int ic_menu_refresh=0x7f02000f;
+        public static final int ic_menu_slideshow=0x7f020010;
+        public static final int ic_menu_star=0x7f020011;
+        public static final int ic_title_camera=0x7f020012;
+        public static final int ic_title_home=0x7f020013;
+        public static final int ic_title_refresh=0x7f020014;
+        public static final int icon=0x7f020015;
+        public static final int stub=0x7f020016;
     }
     public static final class id {
         public static final int actionbar_actions=0x7f090006;
@@ -86,10 +88,9 @@ containing a value of this type.
         public static final int btnGallery=0x7f09001c;
         public static final int btnLogin=0x7f090019;
         public static final int btnUpload=0x7f09001d;
-        public static final int camera_button=0x7f09000e;
         public static final int caption=0x7f090015;
         public static final int captionRow=0x7f09001e;
-        public static final int clear=0x7f090022;
+        public static final int clear=0x7f090023;
         public static final int comments=0x7f090016;
         public static final int dashboardActionbar=0x7f09000a;
         public static final int gallery_button=0x7f09000f;
@@ -99,6 +100,8 @@ containing a value of this type.
         public static final int lblCaption=0x7f09001f;
         public static final int list=0x7f090012;
         public static final int login_button=0x7f090010;
+        public static final int menu_about=0x7f090022;
+        public static final int news_button=0x7f09000e;
         public static final int pictureActionbar=0x7f09001a;
         public static final int popular_button=0x7f09000c;
         public static final int screen=0x7f090000;
@@ -118,30 +121,38 @@ containing a value of this type.
         public static final int take_picture=0x7f030006;
     }
     public static final class menu {
-        public static final int take_picture_menu=0x7f080000;
+        public static final int dashboard_menu=0x7f080000;
+        public static final int take_picture_menu=0x7f080001;
     }
     public static final class string {
         public static final int actionbar_activity_not_found=0x7f060002;
         public static final int app_header=0x7f060003;
         public static final int app_name=0x7f060001;
-        public static final int choose_gallery=0x7f060009;
-        public static final int comment=0x7f06000b;
-        public static final int dashboard=0x7f060012;
-        public static final int default_comment=0x7f06000c;
+        public static final int choose_gallery=0x7f060007;
+        public static final int comment=0x7f060009;
+        /**  activity titles 
+         */
+        public static final int dashboard=0x7f06000f;
+        public static final int default_comment=0x7f060012;
+        /**  basic text 
+         */
         public static final int empty=0x7f060011;
-        public static final int feed=0x7f06000d;
-        public static final int gallery=0x7f060010;
+        public static final int feed=0x7f06000a;
+        public static final int gallery=0x7f06000d;
         public static final int hello=0x7f060000;
-        public static final int login=0x7f060013;
-        public static final int main_menu_clear=0x7f060007;
-        public static final int main_menu_credentials=0x7f060004;
-        public static final int main_menu_preferences=0x7f060006;
-        public static final int main_menu_refresh=0x7f060005;
-        public static final int no_registration_disclaimer=0x7f060014;
-        public static final int popular=0x7f06000e;
-        public static final int take_picture=0x7f060008;
-        public static final int upload=0x7f06000a;
-        public static final int userfeed=0x7f06000f;
+        public static final int login=0x7f060010;
+        public static final int menu_about=0x7f060005;
+        /**  menus 
+         */
+        public static final int menu_clear=0x7f060004;
+        public static final int news=0x7f06000e;
+        public static final int no_registration_disclaimer=0x7f060013;
+        public static final int popular=0x7f06000b;
+        /**  buttons 
+         */
+        public static final int take_picture=0x7f060006;
+        public static final int upload=0x7f060008;
+        public static final int userfeed=0x7f06000c;
     }
     public static final class style {
         public static final int ActionBar=0x7f070000;

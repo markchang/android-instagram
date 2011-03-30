@@ -3,25 +3,31 @@
     <string name="app_name">Andgram</string>
     <string name="app_header">Andgram v1.1</string>
 
-    <string name="main_menu_credentials">Credentials</string>
-    <string name="main_menu_refresh">Refresh</string>
-    <string name="main_menu_preferences">Preferences</string>
-    <string name="main_menu_clear">Clear</string>
+    <!-- menus -->
+    <string name="menu_clear">Clear</string>
+    <string name="menu_about">About</string>
+
+
+    <!-- buttons -->
 
     <string name="take_picture">Take Picture</string>
     <string name="choose_gallery">Choose...</string>
     <string name="upload">Upload</string>
     <string name="comment">Comment</string>
-    <string name="default_comment">Taken by Andgram</string>
     <string name="feed">Feed</string>
     <string name="popular">Popular</string>
     <string name="userfeed">Your feed</string>
     <string name="gallery">Open gallery</string>
-    <string name="empty">empty</string>
+    <string name="news">News</string>
+
+    <!-- activity titles -->
 
     <string name="dashboard">Dashboard</string>
     <string name="login">Login</string>
 
+    <!-- basic text -->
+    <string name="empty">empty</string>
+    <string name="default_comment">Taken by Andgram</string>
     <string name="no_registration_disclaimer">
         This application does not support the creation of new Instagram accounts.
         That portion of the undocumented API has not yet been reverse-engineered.

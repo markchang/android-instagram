@@ -45,11 +45,11 @@
                     style="@style/DashboardButton"
                     android:text="@string/userfeed"
                     android:drawableTop="@drawable/ic_menu_slideshow"/>
-            <Button android:id="@+id/camera_button"
-                    android:onClick="openPictureIntent"
+            <Button android:id="@+id/news_button"
+                    android:onClick="openNewsIntent"
                     style="@style/DashboardButton"
-                    android:text="@string/take_picture"
-                    android:drawableTop="@drawable/ic_menu_camera"/>
+                    android:text="@string/news"
+                    android:drawableTop="@drawable/ic_menu_notifications"/>
         </LinearLayout>
 
         <LinearLayout

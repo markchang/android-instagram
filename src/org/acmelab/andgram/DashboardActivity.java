@@ -29,9 +29,17 @@
 package org.acmelab.andgram;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import com.markupartist.android.widget.ActionBar;
 
 public class DashboardActivity extends Activity {
@@ -42,18 +50,56 @@ public class DashboardActivity extends Activity {
         Intent pictureIntent = new Intent(DashboardActivity.this, TakePictureActivity.class);
         pictureIntent.putExtra("action", Utils.UPLOAD_FROM_CAMERA);
 
-
         final ActionBar actionBar = (ActionBar) findViewById(R.id.dashboardActionbar);
         final ActionBar.Action takePictureAction = new ActionBar.IntentAction(this,
                 pictureIntent, R.drawable.ic_title_camera);
         actionBar.addAction(takePictureAction);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_about:
+                openAboutDialog();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    public void openAboutDialog() {
+        String versionName = null;
+
+        try {
+            ComponentName comp = new ComponentName(getApplicationContext(), DashboardActivity.class);
+            PackageInfo pinfo = getApplicationContext().getPackageManager().getPackageInfo(comp.getPackageName(), 0);
+            versionName = pinfo.versionName;
+        } catch (android.content.pm.PackageManager.NameNotFoundException e) {
+            versionName = null;
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Andgram, the Android Instagram client\n\nVersion " + versionName)
+               .setCancelable(true)
+               .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       dialog.cancel();
+                   }
+               });
+        AlertDialog alert = builder.create();
+        alert.show();
 
     }
 
-    public void openPictureIntent(View view) {
-        Intent pictureIntent = new Intent(DashboardActivity.this, TakePictureActivity.class);
-        pictureIntent.putExtra("action", Utils.UPLOAD_FROM_CAMERA);
-        startActivity(pictureIntent);
+    public void openNewsIntent(View view) {
+        Toast.makeText(DashboardActivity.this, "hi", Toast.LENGTH_SHORT).show();
     }
 
     public void openGalleryIntent(View view) {
