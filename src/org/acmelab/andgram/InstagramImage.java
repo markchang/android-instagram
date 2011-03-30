@@ -43,6 +43,7 @@ public class InstagramImage {
     public String caption = "";
     public String taken_at = "";
     public String pk = "";
+    public boolean liker_list_is_count = false;
 
     public ArrayList<String> liker_list;
     public ArrayList<Comment> comment_list;

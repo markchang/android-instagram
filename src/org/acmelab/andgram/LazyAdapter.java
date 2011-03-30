@@ -104,13 +104,19 @@ public class LazyAdapter extends BaseAdapter {
 
         // comments hold likes and comments
         StringBuilder likerString = new StringBuilder();
+
         if( image.liker_list != null ) {
             if( image.liker_list.size() > 0 ) {
-                likerString.append("Liked by <b>");
-                for( String liker : image.liker_list ) {
-                    likerString.append(" " + liker);
+                if( !image.liker_list_is_count ) {
+                    likerString.append("Liked by <b>");
+                    for( String liker : image.liker_list ) {
+                        likerString.append(" " + liker);
+                    }
+                    likerString.append("</b><br />");
+                } else {
+                    likerString.append("Liked by <b>" + image.liker_list.get(0) +
+                            " people</b><br />");
                 }
-                likerString.append("</b><br />");
             }
         }
 

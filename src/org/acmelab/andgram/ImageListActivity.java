@@ -442,7 +442,12 @@ public class ImageListActivity extends Activity {
                                 try {
                                     JSONArray liker_ids = entry.getJSONArray("liker_ids");
                                     if( liker_ids != null) {
-
+                                        if( liker_ids.length() > 0 ) {
+                                            ArrayList<String> likerList = new ArrayList<String>();
+                                            likerList.add(Integer.toString(liker_ids.length()));
+                                            instagramImage.liker_list = likerList;
+                                            instagramImage.liker_list_is_count = true;
+                                        }
                                     }
                                 } catch( JSONException j ) {}
 
@@ -460,6 +465,7 @@ public class ImageListActivity extends Activity {
                                             }
                                             likerString.append("</b>");
                                             instagramImage.liker_list = likerList;
+                                            instagramImage.liker_list_is_count = false;
                                         }
                                     }
                                 } catch( JSONException j ) {}
