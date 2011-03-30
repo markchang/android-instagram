@@ -143,13 +143,9 @@ public class ImageListActivity extends Activity {
             // 1: comment
             dialogItems.add("Comment");
 
-            // 2: share
+            // 2: share + 3: delete
             if( instagramImage.username.equals(username) ) {
                 dialogItems.add("Share");
-            }
-
-            // 3: delete
-            if( instagramImage.username.equals(username) ) {
                 dialogItems.add("Delete");
             }
 
@@ -200,7 +196,7 @@ public class ImageListActivity extends Activity {
                     Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                     //Text seems to be necessary for Facebook and Twitter
                     sharingIntent.setType("text/plain");
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, permalink);
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, image.caption + " " + permalink);
                     startActivity(Intent.createChooser(sharingIntent,"Share using"));
                 }
             } catch (JSONException j) {
@@ -414,7 +410,7 @@ public class ImageListActivity extends Activity {
 
                                 // user
                                 JSONObject user = entry.getJSONObject("user");
-                                instagramImage.username = user.getString("full_name");
+                                instagramImage.username = user.getString("username");
 
                                 // date taken_at
                                 Long dateLong = entry.getLong("taken_at");
