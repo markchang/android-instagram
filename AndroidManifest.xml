@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ImageListActivity"/>
+        <activity android:name=".ImageGridActivity"/>
         <activity android:name=".DashboardActivity"/>
     </application>
 </manifest> 

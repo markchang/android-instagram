@@ -77,6 +77,13 @@ public class DashboardActivity extends Activity {
         startActivity(feedIntent);
     }
 
+    public void openPopularGridIntent(View view) {
+        Intent feedIntent = new Intent(DashboardActivity.this, ImageGridActivity.class);
+        feedIntent.putExtra("url", Utils.POPULAR_URL);
+        feedIntent.putExtra("title", R.string.popular);
+        startActivity(feedIntent);
+    }
+
     public void openUserfeedIntent(View view) {
         Intent feedIntent = new Intent(DashboardActivity.this, ImageListActivity.class);
         String pk = Utils.getUserPk(getApplicationContext());

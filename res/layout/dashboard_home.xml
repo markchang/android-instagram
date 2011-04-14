@@ -29,7 +29,7 @@
                     android:text="@string/feed"
                     android:drawableTop="@drawable/ic_menu_allfriends"/>
             <Button android:id="@+id/popular_button"
-                    android:onClick="openPopularIntent"
+                    android:onClick="openPopularGridIntent"
                     style="@style/DashboardButton"
                     android:text="@string/popular"
                     android:drawableTop="@drawable/ic_menu_star"/>
