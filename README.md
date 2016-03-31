@@ -2,7 +2,7 @@ Android Instagram (Andgram)
 ===========================
 
 This is an Instagram client for Android. It is a total and utter hack.
-Please do look too closely at the code else you will feel sick and your
+Please do not look too closely at the code else you will feel sick and your
 eyes will likely bleed.
 
 No, it won't let you create an Instagram account. No, Instagram won't let
